@@ -47,6 +47,8 @@ Unless third-party material is explicitly added later with its own license notic
 
 ## License
 
-The original work in this repository is released under the [MIT License](LICENSE).
+The original work in both the **DON Master ASH Lib** and **ash.mod / ashmod.ash** portions of this repository is released under the [MIT License](LICENSE).
+
+Existing third-party notices and upstream licenses remain in force for material they cover.
 
 Software is provided without warranty; use it at your own risk.
