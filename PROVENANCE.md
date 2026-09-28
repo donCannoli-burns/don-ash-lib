@@ -1,20 +1,34 @@
-# Provenance
+# Collection Provenance
 
-- Session source: https://github.com/donCannoli-burns/kol-ash-lab
-- Source archive: `ashmod_don_master_bundle.zip`
-- Source archive SHA-256: `6c45948fa77b0b617253bbb62f07994c6451e01ee58d712435db5abf47069ddd`
-- Repository: `donCannoli-burns/don-ash-lib`
-- Packaging / licensing update: 2026-09-28
+Repository: `donCannoli-burns/don-ash-lib`  
+Collection role: small-project KoLmafia ASH source shelf  
+Packaging update: 2026-09-28  
+Session source: https://github.com/donCannoli-burns/kol-ash-lab
 
-## Semantic components
+## Added project directories
 
-This repository currently contains two closely related components that were also packaged independently in the session shelf:
+- `ash-agent-stdlib/` — extracted from `ash_agent_stdlib_v0.1.0.zip`.
+- `ash-mod/` — descriptor-system portion extracted from `ashmod_don_master_bundle.zip`.
+- `don-master-ash-lib/` — utility-library portion extracted from `ashmod_don_master_bundle.zip`.
+- `kolmafia-ash-html-binding/` — extracted from `kolmafia-ash-html-binding-v0.1.0.zip`.
+- `kolmafia-ash-objective-c/` — extracted from `kolmafia-objective-c-ash-binding.zip`.
 
-- **DON Master ASH Lib** — the reusable `don_master_lib.ash` utility library and smoke/support files.
-- **ash.mod / ashmod.ash** — the declarative module descriptor format and KoLmafia-native reader/checker.
+Each directory contains its own more specific provenance record.
 
-## License
+## Existing root material
 
-Original project code controlled by donCannoli-burns is released under the MIT License. See `LICENSE`.
+Before the shelf expansion, this repository already contained the combined DON Master ASH Lib + `ash.mod` source at repository root. That material was preserved rather than deleted or silently relocated. Shelf copies now also exist under `don-master-ash-lib/` and `ash-mod/`.
 
-Existing third-party notices, source-pattern credits, upstream copyrights, and upstream license terms remain in force for material they cover. This repository does not claim ownership of referenced community projects.
+## Packaging changes
+
+- Added project directories without removing the source-session artifacts.
+- Excluded generated build/cache directories and Git metadata from project copies.
+- Added explicit MIT licenses to projects authorized by donCannoli-burns.
+- Preserved project-level provenance and attribution.
+- Verified pushed project files against local Git blob hashes after transfer.
+
+## License and attribution
+
+Original project code controlled by donCannoli-burns in the five added project directories is released under the MIT License.
+
+Existing third-party notices, source-pattern credits, copyrights, and upstream licenses remain in force for material they cover. Packaging does not claim ownership of referenced third-party projects and does not silently relicense third-party material.

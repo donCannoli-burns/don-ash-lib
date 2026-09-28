@@ -1,54 +1,55 @@
 # don-ash-lib
 
-A modern, standalone KoLmafia ASH utility library and a small `ash.mod` module-descriptor experiment.
+A small-project source shelf for KoLmafia ASH libraries, runtime experiments, language bindings, and developer utilities.
 
-The current package is **DON Master ASH Lib v0.1.0**. It provides namespaced utility helpers for character state, preferences, inventory, valuation, familiars/outfits, recovery, quests/choices, bounded execution, combat primitives, and local update notes.
+Each project keeps its own source, README, provenance, and license inside a named directory. The repository is intentionally a collection of small projects rather than one unified framework.
 
-## Quick start
+## Project shelf
 
-Copy the project files into a location KoLmafia can read from `scripts/`, then run:
+| Project | Purpose | Status |
+|---|---|---|
+| [ash-agent-stdlib](ash-agent-stdlib/) | Large agent-oriented ASH utility/compatibility library with indexed source modules and tests. | Experimental |
+| [ash-mod](ash-mod/) | Declarative `ash.mod` descriptor format and KoLmafia-native reader/checker. | Prototype |
+| [don-master-ash-lib](don-master-ash-lib/) | Namespaced general-purpose KoLmafia ASH utility library. | Prototype |
+| [kolmafia-ash-html-binding](kolmafia-ash-html-binding/) | Bounded ASH ↔ HTML/HTML5 relay binding. | Prototype |
+| [kolmafia-ash-objective-c](kolmafia-ash-objective-c/) | Objective-C client binding for KoLmafia's Browser JSON API / ASH runtime surface. | Experimental |
+
+Open a project's own README for installation, usage, compatibility, verification status, and project-specific provenance.
+
+## Root compatibility files
+
+This repository originally held the DON Master ASH Lib and `ash.mod` experiment directly at repository root. Those files are intentionally retained so existing links/checkouts do not break:
+
+- `don_master_lib.ash`
+- `don_master_smoke.ash`
+- `don_master_manifest.json`
+- `ash.mod`
+- `ashmod.ash`
+- `ASH_MOD_SPEC.md`
+- `DON_MASTER_ASHLIB_README.md`
+
+The corresponding shelf copies live in `don-master-ash-lib/` and `ash-mod/`.
+
+## Source-shelf rule
 
 ```text
-call ashmod.ash show
-call ashmod.ash check
-call ashmod.ash verify
-call ashmod.ash smoke
+one small idea
+    ↓
+one named project directory
+    ↓
+source + README + provenance + license
 ```
 
-Or import the library directly:
+Projects may share a repository because this repository's purpose is archival/source collection, but they remain semantically independent and should not be treated as one combined runtime.
 
-```ash
-import <don_master_lib.ash>;
-```
+## Provenance
 
-For the full API overview and migration notes, see [DON_MASTER_ASHLIB_README.md](DON_MASTER_ASHLIB_README.md). For the module format, see [ASH_MOD_SPEC.md](ASH_MOD_SPEC.md).
-
-## Repository layout
-
-- `don_master_lib.ash` — standalone master utility library
-- `don_master_smoke.ash` — runtime smoke test
-- `don_master_manifest.json` — recorded file sizes and SHA-256 provenance
-- `ash.mod` — module descriptor for the library
-- `ashmod.ash` — KoLmafia-native `ash.mod` reader/checker
-- `ASH_MOD_SPEC.md` — `ash.mod` v1 format and design notes
-- `DON_MASTER_ASHLIB_README.md` — detailed library documentation
-
-## Design boundary
-
-The library is intended to be safe to import: it performs no intentional KoL mutation at top level. Helpers that can mutate state are explicit functions and should be called deliberately by the consuming script.
-
-`ash.mod` v1 is declarative. Its reader does not act as a network installer or general command executor; execution modes are limited to validated module entry/smoke-script operations.
-
-## Provenance and third-party projects
-
-This repository contains original glue, documentation, and clean reimplementations informed by patterns seen in existing KoLmafia community projects. References to BatBrain, ZLib, DicsLibrary, Choice Override, or other projects are acknowledgements of reviewed patterns, **not claims of authorship or ownership of those upstream projects**.
-
-Unless third-party material is explicitly added later with its own license notice, this repository does not purport to relicense upstream code. Upstream authors retain their own copyrights and licenses.
+The shelf was assembled from the KoLmafia ASH language-lab development session. See [PROVENANCE.md](PROVENANCE.md) and each project's own `PROVENANCE.md`.
 
 ## License
 
-The original work in both the **DON Master ASH Lib** and **ash.mod / ashmod.ash** portions of this repository is released under the [MIT License](LICENSE).
+Original project code controlled by **donCannoli-burns** in the five project directories above is released under the MIT License. Each project carries its own `LICENSE`.
 
-Existing third-party notices and upstream licenses remain in force for material they cover.
+Existing third-party notices, source-pattern credits, copyrights, and upstream license terms remain in force for material they cover. References to community projects are attribution and provenance, not claims of authorship or ownership.
 
 Software is provided without warranty; use it at your own risk.
