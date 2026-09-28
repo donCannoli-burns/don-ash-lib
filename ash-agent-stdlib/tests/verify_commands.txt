@@ -1,0 +1,4 @@
+verify ash_agent_stdlib_master.ash
+verify ash_agent_stdlib.ash
+verify ash_agent_smoke.ash
+call ash_agent_smoke.ash

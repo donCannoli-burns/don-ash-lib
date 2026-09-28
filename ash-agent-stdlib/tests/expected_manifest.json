@@ -1,0 +1,4108 @@
+{
+  "version": "0.1.0",
+  "source_entries": 41,
+  "functions_per_source": 10,
+  "expected_function_count": 410,
+  "functions": [
+    {
+      "source": "01",
+      "project": "C2Talon repository ecosystem",
+      "url": "https://github.com/C2Talon?tab=repositories",
+      "name": "aal_c2eco_repo_manifest",
+      "signature": "string aal_c2eco_repo_manifest(string[int] repo_names)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Normalize a repository-name list into stable one-name-per-line manifest text."
+    },
+    {
+      "source": "01",
+      "project": "C2Talon repository ecosystem",
+      "url": "https://github.com/C2Talon?tab=repositories",
+      "name": "aal_c2eco_repo_role",
+      "signature": "string aal_c2eco_repo_role(string repo_name)",
+      "category": "Classification",
+      "side_effects": "PURE",
+      "purpose": "Classify a C2Talon-style repository by its name into a useful runtime role."
+    },
+    {
+      "source": "01",
+      "project": "C2Talon repository ecosystem",
+      "url": "https://github.com/C2Talon?tab=repositories",
+      "name": "aal_c2eco_dependency_lines",
+      "signature": "string aal_c2eco_dependency_lines(string dependencies_text)",
+      "category": "Normalization",
+      "side_effects": "PURE",
+      "purpose": "Normalize dependencies.txt-style content into deterministic dependency lines without comments/blank rows."
+    },
+    {
+      "source": "01",
+      "project": "C2Talon repository ecosystem",
+      "url": "https://github.com/C2Talon?tab=repositories",
+      "name": "aal_c2eco_dependency_count",
+      "signature": "int aal_c2eco_dependency_count(string dependencies_text)",
+      "category": "Query",
+      "side_effects": "PURE",
+      "purpose": "Count unique non-comment dependency declarations in a dependencies file."
+    },
+    {
+      "source": "01",
+      "project": "C2Talon repository ecosystem",
+      "url": "https://github.com/C2Talon?tab=repositories",
+      "name": "aal_c2eco_repo_capability_tags",
+      "signature": "string aal_c2eco_repo_capability_tags(string repo_name)",
+      "category": "Describe",
+      "side_effects": "PURE",
+      "purpose": "Produce compact capability tags inferred from ecosystem naming conventions."
+    },
+    {
+      "source": "01",
+      "project": "C2Talon repository ecosystem",
+      "url": "https://github.com/C2Talon?tab=repositories",
+      "name": "aal_c2eco_select_repos_for_task",
+      "signature": "string aal_c2eco_select_repos_for_task(string[int] repo_names, string task_text)",
+      "category": "Query",
+      "side_effects": "PURE",
+      "purpose": "Select ecosystem repositories whose names/roles plausibly match a task description."
+    },
+    {
+      "source": "01",
+      "project": "C2Talon repository ecosystem",
+      "url": "https://github.com/C2Talon?tab=repositories",
+      "name": "aal_c2eco_manifest_delta",
+      "signature": "string aal_c2eco_manifest_delta(string[int] before_repos, string[int] after_repos)",
+      "category": "Diff / Change Detection",
+      "side_effects": "PURE",
+      "purpose": "Compare two repository manifests and report added/removed names."
+    },
+    {
+      "source": "01",
+      "project": "C2Talon repository ecosystem",
+      "url": "https://github.com/C2Talon?tab=repositories",
+      "name": "aal_c2eco_library_candidates",
+      "signature": "string aal_c2eco_library_candidates(string[int] repo_names)",
+      "category": "Query",
+      "side_effects": "PURE",
+      "purpose": "Extract likely reusable library repositories from a mixed account repository list."
+    },
+    {
+      "source": "01",
+      "project": "C2Talon repository ecosystem",
+      "url": "https://github.com/C2Talon?tab=repositories",
+      "name": "aal_c2eco_ecosystem_health",
+      "signature": "agent_check aal_c2eco_ecosystem_health(string[int] repo_names, string dependencies_text)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Summarize whether a repository ecosystem exposes both reusable libraries and explicit dependency metadata."
+    },
+    {
+      "source": "01",
+      "project": "C2Talon repository ecosystem",
+      "url": "https://github.com/C2Talon?tab=repositories",
+      "name": "aal_c2eco_agent_context",
+      "signature": "string aal_c2eco_agent_context(string[int] repo_names, string dependencies_text, int max_repos)",
+      "category": "LLM Context",
+      "side_effects": "PURE",
+      "purpose": "Build a compact deterministic ecosystem context for an agent selecting reusable C2Talon components."
+    },
+    {
+      "source": "02",
+      "project": "twistedmage assorted scripts",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/tree/master/scripts",
+      "name": "aal_twisted_imports",
+      "signature": "string aal_twisted_imports(string source_text)",
+      "category": "Static Analysis",
+      "side_effects": "PURE",
+      "purpose": "Extract imported ASH filenames from legacy script text."
+    },
+    {
+      "source": "02",
+      "project": "twistedmage assorted scripts",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/tree/master/scripts",
+      "name": "aal_twisted_mutation_surface",
+      "signature": "string aal_twisted_mutation_surface(string source_text)",
+      "category": "Static Analysis",
+      "side_effects": "PURE",
+      "purpose": "Describe potentially mutating primitives present in a legacy ASH script."
+    },
+    {
+      "source": "02",
+      "project": "twistedmage assorted scripts",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/tree/master/scripts",
+      "name": "aal_twisted_legacy_risk_score",
+      "signature": "int aal_twisted_legacy_risk_score(string source_text)",
+      "category": "Debugging",
+      "side_effects": "PURE",
+      "purpose": "Compute a coarse modernization risk score from legacy execution and page-scraping patterns."
+    },
+    {
+      "source": "02",
+      "project": "twistedmage assorted scripts",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/tree/master/scripts",
+      "name": "aal_twisted_preference_refs",
+      "signature": "string aal_twisted_preference_refs(string source_text)",
+      "category": "Static Analysis",
+      "side_effects": "PURE",
+      "purpose": "Extract get_property/set_property preference names from straightforward quoted calls."
+    },
+    {
+      "source": "02",
+      "project": "twistedmage assorted scripts",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/tree/master/scripts",
+      "name": "aal_twisted_url_endpoints",
+      "signature": "string aal_twisted_url_endpoints(string source_text)",
+      "category": "Static Analysis",
+      "side_effects": "PURE",
+      "purpose": "Extract quoted .php endpoints referenced by a legacy script."
+    },
+    {
+      "source": "02",
+      "project": "twistedmage assorted scripts",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/tree/master/scripts",
+      "name": "aal_twisted_entrypoint_count",
+      "signature": "int aal_twisted_entrypoint_count(string source_text)",
+      "category": "Static Analysis",
+      "side_effects": "PURE",
+      "purpose": "Count likely main-function entrypoints in source text."
+    },
+    {
+      "source": "02",
+      "project": "twistedmage assorted scripts",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/tree/master/scripts",
+      "name": "aal_twisted_raw_html_dependency",
+      "signature": "agent_check aal_twisted_raw_html_dependency(string source_text)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Flag scripts whose decisions appear coupled to raw HTML text matching."
+    },
+    {
+      "source": "02",
+      "project": "twistedmage assorted scripts",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/tree/master/scripts",
+      "name": "aal_twisted_import_depth_hint",
+      "signature": "int aal_twisted_import_depth_hint(string source_text)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Estimate dependency pressure from import count and nested executor usage."
+    },
+    {
+      "source": "02",
+      "project": "twistedmage assorted scripts",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/tree/master/scripts",
+      "name": "aal_twisted_modernization_todo",
+      "signature": "string aal_twisted_modernization_todo(string source_text)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Create a deterministic modernization checklist based on patterns actually present."
+    },
+    {
+      "source": "02",
+      "project": "twistedmage assorted scripts",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/tree/master/scripts",
+      "name": "aal_twisted_source_context",
+      "signature": "string aal_twisted_source_context(string source_name, string source_text)",
+      "category": "LLM Context",
+      "side_effects": "PURE",
+      "purpose": "Build a compact static-analysis context for an agent modernizing a twistedmage-era script."
+    },
+    {
+      "source": "03",
+      "project": "c2t_kol_scripts",
+      "url": "https://github.com/C2Talon/c2t_kol_scripts",
+      "name": "aal_c2scripts_choice_state",
+      "signature": "agent_choice_state aal_c2scripts_choice_state(int choice_id)",
+      "category": "Choices",
+      "side_effects": "READ_ONLY",
+      "purpose": "Describe whether KoLmafia is currently handling a requested choice and its configured choiceAdventure preference."
+    },
+    {
+      "source": "03",
+      "project": "c2t_kol_scripts",
+      "url": "https://github.com/C2Talon/c2t_kol_scripts",
+      "name": "aal_c2scripts_choice_preflight",
+      "signature": "agent_check aal_c2scripts_choice_preflight(int choice_id, int intended_option)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Validate an intended choice against current choice state without submitting it."
+    },
+    {
+      "source": "03",
+      "project": "c2t_kol_scripts",
+      "url": "https://github.com/C2Talon/c2t_kol_scripts",
+      "name": "aal_c2scripts_cold_medicine_state",
+      "signature": "string aal_c2scripts_cold_medicine_state()",
+      "category": "Resources",
+      "side_effects": "READ_ONLY",
+      "purpose": "Summarize Cold Medicine Cabinet consultation state from tracked preferences."
+    },
+    {
+      "source": "03",
+      "project": "c2t_kol_scripts",
+      "url": "https://github.com/C2Talon/c2t_kol_scripts",
+      "name": "aal_c2scripts_shavings_state",
+      "signature": "string aal_c2scripts_shavings_state()",
+      "category": "Effects",
+      "side_effects": "READ_ONLY",
+      "purpose": "Expose the Daylight Shavings Helmet tracking preferences as compact machine context."
+    },
+    {
+      "source": "03",
+      "project": "c2t_kol_scripts",
+      "url": "https://github.com/C2Talon/c2t_kol_scripts",
+      "name": "aal_c2scripts_map_monster_preflight",
+      "signature": "agent_check aal_c2scripts_map_monster_preflight(location where, monster target)",
+      "category": "Adventure / Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Check non-mutating prerequisites for using Map the Monsters at a requested location."
+    },
+    {
+      "source": "03",
+      "project": "c2t_kol_scripts",
+      "url": "https://github.com/C2Talon/c2t_kol_scripts",
+      "name": "aal_c2scripts_cast_resource_preview",
+      "signature": "agent_action_preview aal_c2scripts_cast_resource_preview(skill s, int casts)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Preview MP and skill-availability requirements for repeated casting without casting."
+    },
+    {
+      "source": "03",
+      "project": "c2t_kol_scripts",
+      "url": "https://github.com/C2Talon/c2t_kol_scripts",
+      "name": "aal_c2scripts_resource_readiness",
+      "signature": "agent_check aal_c2scripts_resource_readiness(item required_item, skill required_skill)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Combine item and skill availability into one reusable resource readiness check."
+    },
+    {
+      "source": "03",
+      "project": "c2t_kol_scripts",
+      "url": "https://github.com/C2Talon/c2t_kol_scripts",
+      "name": "aal_c2scripts_tracker_fingerprint",
+      "signature": "string aal_c2scripts_tracker_fingerprint(string[int] preference_names)",
+      "category": "Serialization",
+      "side_effects": "READ_ONLY",
+      "purpose": "Serialize a caller-selected tracker preference set in stable lexical order."
+    },
+    {
+      "source": "03",
+      "project": "c2t_kol_scripts",
+      "url": "https://github.com/C2Talon/c2t_kol_scripts",
+      "name": "aal_c2scripts_resource_delta",
+      "signature": "agent_delta aal_c2scripts_resource_delta(string property_name, int before_value)",
+      "category": "Diff / Change Detection",
+      "side_effects": "READ_ONLY",
+      "purpose": "Compare a numeric tracked preference to an earlier captured value."
+    },
+    {
+      "source": "03",
+      "project": "c2t_kol_scripts",
+      "url": "https://github.com/C2Talon/c2t_kol_scripts",
+      "name": "aal_c2scripts_agent_context",
+      "signature": "string aal_c2scripts_agent_context(location where, monster target, int choice_id)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact choice/cartography/resource context inspired by c2t_kol_scripts."
+    },
+    {
+      "source": "04",
+      "project": "Ezandora repository ecosystem",
+      "url": "https://github.com/Ezandora?tab=repositories",
+      "name": "aal_ezeco_advisory_entry",
+      "signature": "string aal_ezeco_advisory_entry(string title, string url, string[int] details)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Serialize one Guide-like advisory entry as compact deterministic text."
+    },
+    {
+      "source": "04",
+      "project": "Ezandora repository ecosystem",
+      "url": "https://github.com/Ezandora?tab=repositories",
+      "name": "aal_ezeco_task_priority",
+      "signature": "int aal_ezeco_task_priority(boolean mandatory, boolean available_now, int turns_until_relevant)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Calculate a stable task-priority signal inspired by Guide task/resource/future-task separation."
+    },
+    {
+      "source": "04",
+      "project": "Ezandora repository ecosystem",
+      "url": "https://github.com/Ezandora?tab=repositories",
+      "name": "aal_ezeco_resource_remaining",
+      "signature": "agent_resource_state aal_ezeco_resource_remaining(string used_property, int limit_value)",
+      "category": "Resources",
+      "side_effects": "READ_ONLY",
+      "purpose": "Return remaining uses for a preference-backed daily resource."
+    },
+    {
+      "source": "04",
+      "project": "Ezandora repository ecosystem",
+      "url": "https://github.com/Ezandora?tab=repositories",
+      "name": "aal_ezeco_future_task_state",
+      "signature": "agent_check aal_ezeco_future_task_state(string unlock_property, string complete_property)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Describe future-task eligibility from explicit unlock/completion preferences."
+    },
+    {
+      "source": "04",
+      "project": "Ezandora repository ecosystem",
+      "url": "https://github.com/Ezandora?tab=repositories",
+      "name": "aal_ezeco_location_advice",
+      "signature": "string aal_ezeco_location_advice(location loc)",
+      "category": "Adventure",
+      "side_effects": "READ_ONLY",
+      "purpose": "Expose location accessibility and recent turn count as advisory context."
+    },
+    {
+      "source": "04",
+      "project": "Ezandora repository ecosystem",
+      "url": "https://github.com/Ezandora?tab=repositories",
+      "name": "aal_ezeco_iotm_presence",
+      "signature": "agent_check aal_ezeco_iotm_presence(item key_item, familiar key_familiar, skill key_skill)",
+      "category": "Capability Discovery",
+      "side_effects": "READ_ONLY",
+      "purpose": "Describe whether a feature is present through any of its item/familiar/skill surfaces."
+    },
+    {
+      "source": "04",
+      "project": "Ezandora repository ecosystem",
+      "url": "https://github.com/Ezandora?tab=repositories",
+      "name": "aal_ezeco_advice_dedupe",
+      "signature": "string aal_ezeco_advice_dedupe(string[int] advisory_lines)",
+      "category": "Normalization",
+      "side_effects": "PURE",
+      "purpose": "De-duplicate Guide-like advisory lines while retaining deterministic lexical order."
+    },
+    {
+      "source": "04",
+      "project": "Ezandora repository ecosystem",
+      "url": "https://github.com/Ezandora?tab=repositories",
+      "name": "aal_ezeco_advice_filter",
+      "signature": "string aal_ezeco_advice_filter(string[int] advisory_lines, string query)",
+      "category": "Query",
+      "side_effects": "PURE",
+      "purpose": "Filter advisory lines case-insensitively for an agent/user query."
+    },
+    {
+      "source": "04",
+      "project": "Ezandora repository ecosystem",
+      "url": "https://github.com/Ezandora?tab=repositories",
+      "name": "aal_ezeco_advice_budget",
+      "signature": "string aal_ezeco_advice_budget(string[int] advisory_lines, int max_entries)",
+      "category": "LLM Context",
+      "side_effects": "PURE",
+      "purpose": "Cap a potentially large advisory list for context-budget-aware agent use."
+    },
+    {
+      "source": "04",
+      "project": "Ezandora repository ecosystem",
+      "url": "https://github.com/Ezandora?tab=repositories",
+      "name": "aal_ezeco_agent_context",
+      "signature": "string aal_ezeco_agent_context(string section_name, string[int] current_tasks, string[int] resources, int max_each)",
+      "category": "LLM Context",
+      "side_effects": "PURE",
+      "purpose": "Build a Guide-inspired compact tasks/resources section for an LLM."
+    },
+    {
+      "source": "05",
+      "project": "IronTetsubo KoLmafia-ash scripts",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/tree/master/scripts",
+      "name": "aal_iron_scripts_side_effect_scan",
+      "signature": "string aal_iron_scripts_side_effect_scan(string source_text)",
+      "category": "Static Analysis",
+      "side_effects": "PURE",
+      "purpose": "List mutation-oriented primitives in an IronTetsubo-era script."
+    },
+    {
+      "source": "05",
+      "project": "IronTetsubo KoLmafia-ash scripts",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/tree/master/scripts",
+      "name": "aal_iron_scripts_network_scan",
+      "signature": "agent_check aal_iron_scripts_network_scan(string source_text)",
+      "category": "Static Analysis",
+      "side_effects": "PURE",
+      "purpose": "Detect external HTTP-era dependencies separately from in-game page access."
+    },
+    {
+      "source": "05",
+      "project": "IronTetsubo KoLmafia-ash scripts",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/tree/master/scripts",
+      "name": "aal_iron_scripts_html_parse_score",
+      "signature": "int aal_iron_scripts_html_parse_score(string source_text)",
+      "category": "Debugging",
+      "side_effects": "PURE",
+      "purpose": "Score reliance on substring/excise/matcher parsing around page requests."
+    },
+    {
+      "source": "05",
+      "project": "IronTetsubo KoLmafia-ash scripts",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/tree/master/scripts",
+      "name": "aal_iron_scripts_import_manifest",
+      "signature": "string aal_iron_scripts_import_manifest(string source_text)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Extract legacy imports for migration dependency auditing."
+    },
+    {
+      "source": "05",
+      "project": "IronTetsubo KoLmafia-ash scripts",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/tree/master/scripts",
+      "name": "aal_iron_scripts_property_manifest",
+      "signature": "string aal_iron_scripts_property_manifest(string source_text)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Extract quoted properties referenced by get_property/set_property."
+    },
+    {
+      "source": "05",
+      "project": "IronTetsubo KoLmafia-ash scripts",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/tree/master/scripts",
+      "name": "aal_iron_scripts_cli_command_literals",
+      "signature": "string aal_iron_scripts_cli_command_literals(string source_text)",
+      "category": "Static Analysis",
+      "side_effects": "PURE",
+      "purpose": "Extract straightforward quoted cli_execute command literals for review."
+    },
+    {
+      "source": "05",
+      "project": "IronTetsubo KoLmafia-ash scripts",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/tree/master/scripts",
+      "name": "aal_iron_scripts_modernization_pressure",
+      "signature": "int aal_iron_scripts_modernization_pressure(string source_text)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Combine parsing, command, network, and direct-page indicators into one modernization pressure metric."
+    },
+    {
+      "source": "05",
+      "project": "IronTetsubo KoLmafia-ash scripts",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/tree/master/scripts",
+      "name": "aal_iron_scripts_import_safe_hint",
+      "signature": "agent_check aal_iron_scripts_import_safe_hint(string source_text)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Flag likely top-level side effects by comparing early executable tokens with function declarations."
+    },
+    {
+      "source": "05",
+      "project": "IronTetsubo KoLmafia-ash scripts",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/tree/master/scripts",
+      "name": "aal_iron_scripts_read_plan_split",
+      "signature": "string aal_iron_scripts_read_plan_split(string source_text)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Suggest explicit read/plan/execute split points based on legacy primitives found."
+    },
+    {
+      "source": "05",
+      "project": "IronTetsubo KoLmafia-ash scripts",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/tree/master/scripts",
+      "name": "aal_iron_scripts_agent_context",
+      "signature": "string aal_iron_scripts_agent_context(string source_name, string source_text)",
+      "category": "LLM Context",
+      "side_effects": "PURE",
+      "purpose": "Build a compact migration context for an agent reviewing historical IronTetsubo scripts."
+    },
+    {
+      "source": "06",
+      "project": "c2t_hccs",
+      "url": "https://github.com/C2Talon/c2t_hccs",
+      "name": "aal_hccs_test_order",
+      "signature": "string aal_hccs_test_order()",
+      "category": "Community Service",
+      "side_effects": "PURE",
+      "purpose": "Return Community Service test order used by c2t_hccs as a deterministic machine-readable list."
+    },
+    {
+      "source": "06",
+      "project": "c2t_hccs",
+      "url": "https://github.com/C2Talon/c2t_hccs",
+      "name": "aal_hccs_thresholds_parse",
+      "signature": "string aal_hccs_thresholds_parse(string thresholds_csv)",
+      "category": "Normalization",
+      "side_effects": "PURE",
+      "purpose": "Normalize ten Community Service threshold values into indexed TSV."
+    },
+    {
+      "source": "06",
+      "project": "c2t_hccs",
+      "url": "https://github.com/C2Talon/c2t_hccs",
+      "name": "aal_hccs_threshold_for",
+      "signature": "int aal_hccs_threshold_for(string thresholds_csv, int test_index)",
+      "category": "Query",
+      "side_effects": "PURE",
+      "purpose": "Read one test threshold safely from the configured ten-value CSV."
+    },
+    {
+      "source": "06",
+      "project": "c2t_hccs",
+      "url": "https://github.com/C2Talon/c2t_hccs",
+      "name": "aal_hccs_test_readiness",
+      "signature": "agent_modifier_state aal_hccs_test_readiness(string modifier_name, float target_value)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Compare a current numeric modifier against a requested Community Service pre-test target."
+    },
+    {
+      "source": "06",
+      "project": "c2t_hccs",
+      "url": "https://github.com/C2Talon/c2t_hccs",
+      "name": "aal_hccs_turn_threshold_check",
+      "signature": "agent_check aal_hccs_turn_threshold_check(int predicted_turns, int allowed_turns, string test_name)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Validate a predicted Community Service test duration against configured threshold."
+    },
+    {
+      "source": "06",
+      "project": "c2t_hccs",
+      "url": "https://github.com/C2Talon/c2t_hccs",
+      "name": "aal_hccs_recovery_state",
+      "signature": "string aal_hccs_recovery_state()",
+      "category": "Recovery",
+      "side_effects": "READ_ONLY",
+      "purpose": "Expose non-mutating HP/MP/beaten-up state relevant to c2t_hccs recovery."
+    },
+    {
+      "source": "06",
+      "project": "c2t_hccs",
+      "url": "https://github.com/C2Talon/c2t_hccs",
+      "name": "aal_hccs_resource_budget",
+      "signature": "agent_resource_state aal_hccs_resource_budget(string used_property, int cap)",
+      "category": "Resources",
+      "side_effects": "READ_ONLY",
+      "purpose": "Describe a daily resource budget for a Community Service preparation step."
+    },
+    {
+      "source": "06",
+      "project": "c2t_hccs",
+      "url": "https://github.com/C2Talon/c2t_hccs",
+      "name": "aal_hccs_pretest_context",
+      "signature": "string aal_hccs_pretest_context(string test_name, string modifier_name, int predicted_turns, int allowed_turns)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact pre-test context with modifier state, health, and threshold."
+    },
+    {
+      "source": "06",
+      "project": "c2t_hccs",
+      "url": "https://github.com/C2Talon/c2t_hccs",
+      "name": "aal_hccs_property_snapshot",
+      "signature": "string aal_hccs_property_snapshot(string[int] names)",
+      "category": "Serialization",
+      "side_effects": "READ_ONLY",
+      "purpose": "Serialize selected HCCS configuration/preferences deterministically."
+    },
+    {
+      "source": "06",
+      "project": "c2t_hccs",
+      "url": "https://github.com/C2Talon/c2t_hccs",
+      "name": "aal_hccs_stop_reason",
+      "signature": "string aal_hccs_stop_reason(int predicted_turns, int allowed_turns, boolean resource_ready, boolean health_ready)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Explain whether an HCCS agent should stop before a test without performing it."
+    },
+    {
+      "source": "07",
+      "project": "c2t_ascend",
+      "url": "https://github.com/C2Talon/c2t_ascend",
+      "name": "aal_ascend_config_fields",
+      "signature": "string aal_ascend_config_fields()",
+      "category": "Ascension",
+      "side_effects": "PURE",
+      "purpose": "Return stable names for a minimal Valhalla/ascension plan schema."
+    },
+    {
+      "source": "07",
+      "project": "c2t_ascend",
+      "url": "https://github.com/C2Talon/c2t_ascend",
+      "name": "aal_ascend_config_value",
+      "signature": "string aal_ascend_config_value(string csv, int index)",
+      "category": "Normalization",
+      "side_effects": "PURE",
+      "purpose": "Safely read an indexed value from a comma-delimited ascension configuration."
+    },
+    {
+      "source": "07",
+      "project": "c2t_ascend",
+      "url": "https://github.com/C2Talon/c2t_ascend",
+      "name": "aal_ascend_karma_budget",
+      "signature": "agent_range_state aal_ascend_karma_budget(int planned_perm_cost)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Compare banked karma with planned perm expenditure."
+    },
+    {
+      "source": "07",
+      "project": "c2t_ascend",
+      "url": "https://github.com/C2Talon/c2t_ascend",
+      "name": "aal_ascend_prerequisite_state",
+      "signature": "string aal_ascend_prerequisite_state()",
+      "category": "Ascension",
+      "side_effects": "READ_ONLY",
+      "purpose": "Expose current aftercore/interaction/king state relevant to entering Valhalla."
+    },
+    {
+      "source": "07",
+      "project": "c2t_ascend",
+      "url": "https://github.com/C2Talon/c2t_ascend",
+      "name": "aal_ascend_plan_validate",
+      "signature": "agent_check aal_ascend_plan_validate(string path_name, string class_name, string sign_name)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Validate that configured path/class/sign strings resolve to current KoLmafia typed values."
+    },
+    {
+      "source": "07",
+      "project": "c2t_ascend",
+      "url": "https://github.com/C2Talon/c2t_ascend",
+      "name": "aal_ascend_perm_candidates",
+      "signature": "string aal_ascend_perm_candidates(skill[int] skills, int max_entries)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Filter caller-supplied perm candidates to skills actually known by the character."
+    },
+    {
+      "source": "07",
+      "project": "c2t_ascend",
+      "url": "https://github.com/C2Talon/c2t_ascend",
+      "name": "aal_ascend_resource_snapshot",
+      "signature": "string aal_ascend_resource_snapshot()",
+      "category": "Serialization",
+      "side_effects": "READ_ONLY",
+      "purpose": "Serialize compact pre-ascension currencies/resources useful for planning."
+    },
+    {
+      "source": "07",
+      "project": "c2t_ascend",
+      "url": "https://github.com/C2Talon/c2t_ascend",
+      "name": "aal_ascend_post_script_preview",
+      "signature": "agent_action_preview aal_ascend_post_script_preview(string command_text)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Describe the configured post-ascension command without executing it."
+    },
+    {
+      "source": "07",
+      "project": "c2t_ascend",
+      "url": "https://github.com/C2Talon/c2t_ascend",
+      "name": "aal_ascend_config_fingerprint",
+      "signature": "int aal_ascend_config_fingerprint(string config_csv)",
+      "category": "Debugging",
+      "side_effects": "PURE",
+      "purpose": "Produce a stable lightweight fingerprint for detecting ascension-config drift."
+    },
+    {
+      "source": "07",
+      "project": "c2t_ascend",
+      "url": "https://github.com/C2Talon/c2t_ascend",
+      "name": "aal_ascend_agent_context",
+      "signature": "string aal_ascend_agent_context(string config_csv, string post_script)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact current-state plus configured-plan context for an ascension agent."
+    },
+    {
+      "source": "08",
+      "project": "pLooper",
+      "url": "https://github.com/Prusias-kol/pLooper",
+      "name": "aal_ploop_phase_names",
+      "signature": "string aal_ploop_phase_names()",
+      "category": "Workflow",
+      "side_effects": "PURE",
+      "purpose": "Return deterministic pLooper-inspired full-day phase names."
+    },
+    {
+      "source": "08",
+      "project": "pLooper",
+      "url": "https://github.com/Prusias-kol/pLooper",
+      "name": "aal_ploop_breakpoint_seen",
+      "signature": "boolean aal_ploop_breakpoint_seen(string event_list, string breakpoint)",
+      "category": "Query",
+      "side_effects": "PURE",
+      "purpose": "Check exact breakpoint membership in a comma-delimited event list."
+    },
+    {
+      "source": "08",
+      "project": "pLooper",
+      "url": "https://github.com/Prusias-kol/pLooper",
+      "name": "aal_ploop_phase_index",
+      "signature": "int aal_ploop_phase_index(string event_list)",
+      "category": "Workflow",
+      "side_effects": "PURE",
+      "purpose": "Infer furthest completed loop phase from named breakpoint text."
+    },
+    {
+      "source": "08",
+      "project": "pLooper",
+      "url": "https://github.com/Prusias-kol/pLooper",
+      "name": "aal_ploop_reentry_context",
+      "signature": "string aal_ploop_reentry_context(string event_list)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Describe current loop re-entry position without executing a phase."
+    },
+    {
+      "source": "08",
+      "project": "pLooper",
+      "url": "https://github.com/Prusias-kol/pLooper",
+      "name": "aal_ploop_next_phase",
+      "signature": "string aal_ploop_next_phase(string event_list)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Choose the next canonical pLooper-inspired phase from observed breakpoint history."
+    },
+    {
+      "source": "08",
+      "project": "pLooper",
+      "url": "https://github.com/Prusias-kol/pLooper",
+      "name": "aal_ploop_organ_snapshot",
+      "signature": "agent_organ_state aal_ploop_organ_snapshot()",
+      "category": "Player",
+      "side_effects": "READ_ONLY",
+      "purpose": "Capture organs for phase-boundary planning."
+    },
+    {
+      "source": "08",
+      "project": "pLooper",
+      "url": "https://github.com/Prusias-kol/pLooper",
+      "name": "aal_ploop_workshed_preflight",
+      "signature": "agent_check aal_ploop_workshed_preflight(item desired_workshed)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Check whether a desired workshed item is already available before a loop would attempt installation."
+    },
+    {
+      "source": "08",
+      "project": "pLooper",
+      "url": "https://github.com/Prusias-kol/pLooper",
+      "name": "aal_ploop_ascension_leg",
+      "signature": "int aal_ploop_ascension_leg()",
+      "category": "Workflow",
+      "side_effects": "READ_ONLY",
+      "purpose": "Normalize ascensionsToday into a simple loop leg number."
+    },
+    {
+      "source": "08",
+      "project": "pLooper",
+      "url": "https://github.com/Prusias-kol/pLooper",
+      "name": "aal_ploop_completion_check",
+      "signature": "agent_check aal_ploop_completion_check(string event_list)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Return structured completion status from event-list evidence."
+    },
+    {
+      "source": "08",
+      "project": "pLooper",
+      "url": "https://github.com/Prusias-kol/pLooper",
+      "name": "aal_ploop_phase_preview",
+      "signature": "string aal_ploop_phase_preview(string event_list, string configured_ascend_command)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Describe the next loop phase and relevant state without executing it."
+    },
+    {
+      "source": "09",
+      "project": "pTrack repository",
+      "url": "https://github.com/Prusias-kol/pTrack",
+      "name": "aal_ptrack_checkpoint_key",
+      "signature": "string aal_ptrack_checkpoint_key(string date, string event)",
+      "category": "Normalization",
+      "side_effects": "PURE",
+      "purpose": "Create an unambiguous breakpoint key from date and event."
+    },
+    {
+      "source": "09",
+      "project": "pTrack repository",
+      "url": "https://github.com/Prusias-kol/pTrack",
+      "name": "aal_ptrack_snapshot",
+      "signature": "agent_breakpoint aal_ptrack_snapshot(string name, int stamp)",
+      "category": "Tracking",
+      "side_effects": "READ_ONLY",
+      "purpose": "Capture a compact in-memory breakpoint snapshot without writing files."
+    },
+    {
+      "source": "09",
+      "project": "pTrack repository",
+      "url": "https://github.com/Prusias-kol/pTrack",
+      "name": "aal_ptrack_breakpoint_delta",
+      "signature": "string aal_ptrack_breakpoint_delta(agent_breakpoint before, agent_breakpoint after)",
+      "category": "Diff / Change Detection",
+      "side_effects": "PURE",
+      "purpose": "Serialize meat/turn/time deltas between two in-memory breakpoints."
+    },
+    {
+      "source": "09",
+      "project": "pTrack repository",
+      "url": "https://github.com/Prusias-kol/pTrack",
+      "name": "aal_ptrack_meat_per_adventure",
+      "signature": "float aal_ptrack_meat_per_adventure(agent_breakpoint before, agent_breakpoint after)",
+      "category": "Analytics",
+      "side_effects": "PURE",
+      "purpose": "Compute liquid-meat delta per turn for a checkpoint interval."
+    },
+    {
+      "source": "09",
+      "project": "pTrack repository",
+      "url": "https://github.com/Prusias-kol/pTrack",
+      "name": "aal_ptrack_event_list_normalize",
+      "signature": "string aal_ptrack_event_list_normalize(string event_list)",
+      "category": "Normalization",
+      "side_effects": "PURE",
+      "purpose": "De-duplicate a comma-delimited breakpoint list while preserving stable lexical output."
+    },
+    {
+      "source": "09",
+      "project": "pTrack repository",
+      "url": "https://github.com/Prusias-kol/pTrack",
+      "name": "aal_ptrack_adjacent_pairs",
+      "signature": "string aal_ptrack_adjacent_pairs(string event_list)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Turn a breakpoint list into adjacent comparison pairs."
+    },
+    {
+      "source": "09",
+      "project": "pTrack repository",
+      "url": "https://github.com/Prusias-kol/pTrack",
+      "name": "aal_ptrack_checkpoint_validate",
+      "signature": "agent_check aal_ptrack_checkpoint_validate(agent_breakpoint b)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Validate a breakpoint record before persistence/comparison."
+    },
+    {
+      "source": "09",
+      "project": "pTrack repository",
+      "url": "https://github.com/Prusias-kol/pTrack",
+      "name": "aal_ptrack_rate_context",
+      "signature": "string aal_ptrack_rate_context(agent_breakpoint before, agent_breakpoint after)",
+      "category": "LLM Context",
+      "side_effects": "PURE",
+      "purpose": "Build compact interval-rate context for an agent interpreting pTrack data."
+    },
+    {
+      "source": "09",
+      "project": "pTrack repository",
+      "url": "https://github.com/Prusias-kol/pTrack",
+      "name": "aal_ptrack_daily_reset_needed",
+      "signature": "boolean aal_ptrack_daily_reset_needed(string stored_date)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Determine whether a tracker's stored date differs from KoLmafia's current date."
+    },
+    {
+      "source": "09",
+      "project": "pTrack repository",
+      "url": "https://github.com/Prusias-kol/pTrack",
+      "name": "aal_ptrack_agent_context",
+      "signature": "string aal_ptrack_agent_context(string event_list, agent_breakpoint latest)",
+      "category": "LLM Context",
+      "side_effects": "PURE",
+      "purpose": "Build compact tracker state for an LLM deciding what interval to compare next."
+    },
+    {
+      "source": "10",
+      "project": "pUpdates repository",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdates_state",
+      "signature": "agent_kv aal_pupdates_state(string script_name)",
+      "category": "Updates",
+      "side_effects": "READ_ONLY",
+      "purpose": "Read the local seen-version property for a pUpdates-style script."
+    },
+    {
+      "source": "10",
+      "project": "pUpdates repository",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdates_seen_version",
+      "signature": "int aal_pupdates_seen_version(string script_name)",
+      "category": "Updates",
+      "side_effects": "READ_ONLY",
+      "purpose": "Return normalized seen update version for a script."
+    },
+    {
+      "source": "10",
+      "project": "pUpdates repository",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdates_pending_count",
+      "signature": "int aal_pupdates_pending_count(string script_name, int current_version)",
+      "category": "Updates",
+      "side_effects": "READ_ONLY",
+      "purpose": "Compute how many update entries are unseen without changing the local version."
+    },
+    {
+      "source": "10",
+      "project": "pUpdates repository",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdates_pending_range",
+      "signature": "string aal_pupdates_pending_range(string script_name, int current_version)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Describe inclusive unseen changelog version range."
+    },
+    {
+      "source": "10",
+      "project": "pUpdates repository",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdates_version_check",
+      "signature": "agent_check aal_pupdates_version_check(string script_name, int current_version)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Return structured up-to-date status without marking updates as read."
+    },
+    {
+      "source": "10",
+      "project": "pUpdates repository",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdates_property_name",
+      "signature": "string aal_pupdates_property_name(string script_name)",
+      "category": "Normalization",
+      "side_effects": "PURE",
+      "purpose": "Generate the canonical local-version preference name used by pUpdates."
+    },
+    {
+      "source": "10",
+      "project": "pUpdates repository",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdates_update_key",
+      "signature": "string aal_pupdates_update_key(string script_name, int version)",
+      "category": "Normalization",
+      "side_effects": "PURE",
+      "purpose": "Create a stable key for one script/version update entry."
+    },
+    {
+      "source": "10",
+      "project": "pUpdates repository",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdates_update_preview",
+      "signature": "agent_action_preview aal_pupdates_update_preview(string script_name, int current_version)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build a non-mutating update-check preview."
+    },
+    {
+      "source": "10",
+      "project": "pUpdates repository",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdates_status_line",
+      "signature": "string aal_pupdates_status_line(string script_name, int current_version)",
+      "category": "Serialization",
+      "side_effects": "READ_ONLY",
+      "purpose": "Serialize one update status as TSV."
+    },
+    {
+      "source": "10",
+      "project": "pUpdates repository",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdates_agent_context",
+      "signature": "string aal_pupdates_agent_context(string[int] scripts, int[int] current_versions)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact multi-script update state without acknowledging any update."
+    },
+    {
+      "source": "11",
+      "project": "pLooper lowerstats.ash",
+      "url": "https://github.com/Prusias-kol/pLooper/blob/main/kolmafia/scripts/ploophelpers/lowerstats.ash",
+      "name": "aal_lowerstats_pressure",
+      "signature": "agent_range_state aal_lowerstats_pressure(stat s, int cap)",
+      "category": "Player",
+      "side_effects": "READ_ONLY",
+      "purpose": "Measure how far a buffed stat exceeds a desired cap."
+    },
+    {
+      "source": "11",
+      "project": "pLooper lowerstats.ash",
+      "url": "https://github.com/Prusias-kol/pLooper/blob/main/kolmafia/scripts/ploophelpers/lowerstats.ash",
+      "name": "aal_lowerstats_all_pressure",
+      "signature": "string aal_lowerstats_all_pressure(int cap)",
+      "category": "Serialization",
+      "side_effects": "READ_ONLY",
+      "purpose": "Serialize over-cap pressure for all three stats."
+    },
+    {
+      "source": "11",
+      "project": "pLooper lowerstats.ash",
+      "url": "https://github.com/Prusias-kol/pLooper/blob/main/kolmafia/scripts/ploophelpers/lowerstats.ash",
+      "name": "aal_lowerstats_positive_effects",
+      "signature": "string aal_lowerstats_positive_effects(stat s, int max_entries)",
+      "category": "Effects",
+      "side_effects": "READ_ONLY",
+      "purpose": "List active effects that positively modify the requested stat, bounded for agent context."
+    },
+    {
+      "source": "11",
+      "project": "pLooper lowerstats.ash",
+      "url": "https://github.com/Prusias-kol/pLooper/blob/main/kolmafia/scripts/ploophelpers/lowerstats.ash",
+      "name": "aal_lowerstats_effect_safety",
+      "signature": "agent_check aal_lowerstats_effect_safety(effect e)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Explain whether an active positive-stat effect also carries protected economic/familiar/smithsness modifiers."
+    },
+    {
+      "source": "11",
+      "project": "pLooper lowerstats.ash",
+      "url": "https://github.com/Prusias-kol/pLooper/blob/main/kolmafia/scripts/ploophelpers/lowerstats.ash",
+      "name": "aal_lowerstats_shrug_candidates",
+      "signature": "string aal_lowerstats_shrug_candidates(stat s, int cap, int max_entries)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "List active positive-stat effects that are plausible shrug candidates under the source's protection rules."
+    },
+    {
+      "source": "11",
+      "project": "pLooper lowerstats.ash",
+      "url": "https://github.com/Prusias-kol/pLooper/blob/main/kolmafia/scripts/ploophelpers/lowerstats.ash",
+      "name": "aal_lowerstats_item_option",
+      "signature": "string aal_lowerstats_item_option(stat s)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Describe source-inspired low-stat consumable/item options without acquiring or using them."
+    },
+    {
+      "source": "11",
+      "project": "pLooper lowerstats.ash",
+      "url": "https://github.com/Prusias-kol/pLooper/blob/main/kolmafia/scripts/ploophelpers/lowerstats.ash",
+      "name": "aal_lowerstats_budget_preview",
+      "signature": "agent_action_preview aal_lowerstats_budget_preview(item it, int max_price)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Compare a stat-lowering item's mall price with a caller budget without buying it."
+    },
+    {
+      "source": "11",
+      "project": "pLooper lowerstats.ash",
+      "url": "https://github.com/Prusias-kol/pLooper/blob/main/kolmafia/scripts/ploophelpers/lowerstats.ash",
+      "name": "aal_lowerstats_plan",
+      "signature": "string aal_lowerstats_plan(stat s, int cap)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build a compact read-only stat-lowering plan for one stat."
+    },
+    {
+      "source": "11",
+      "project": "pLooper lowerstats.ash",
+      "url": "https://github.com/Prusias-kol/pLooper/blob/main/kolmafia/scripts/ploophelpers/lowerstats.ash",
+      "name": "aal_lowerstats_postcondition",
+      "signature": "agent_check aal_lowerstats_postcondition(stat s, int cap)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Check the postcondition the original helper ultimately wanted: buffed stat at or below cap."
+    },
+    {
+      "source": "11",
+      "project": "pLooper lowerstats.ash",
+      "url": "https://github.com/Prusias-kol/pLooper/blob/main/kolmafia/scripts/ploophelpers/lowerstats.ash",
+      "name": "aal_lowerstats_agent_context",
+      "signature": "string aal_lowerstats_agent_context(int cap)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact all-stat state plus relevant source-inspired negative effects for an agent."
+    },
+    {
+      "source": "12",
+      "project": "pwrapper",
+      "url": "https://github.com/Prusias-kol/pwrapper",
+      "name": "aal_pwrapper_retry_state",
+      "signature": "agent_range_state aal_pwrapper_retry_state(int attempt, int max_attempts)",
+      "category": "Workflow",
+      "side_effects": "PURE",
+      "purpose": "Normalize wrapper retry counters."
+    },
+    {
+      "source": "12",
+      "project": "pwrapper",
+      "url": "https://github.com/Prusias-kol/pwrapper",
+      "name": "aal_pwrapper_error_context",
+      "signature": "string aal_pwrapper_error_context(string error_message)",
+      "category": "Debugging",
+      "side_effects": "READ_ONLY",
+      "purpose": "Combine a caught wrapper error with KoLmafia's latest combat/encounter diagnostics."
+    },
+    {
+      "source": "12",
+      "project": "pwrapper",
+      "url": "https://github.com/Prusias-kol/pwrapper",
+      "name": "aal_pwrapper_choice_recovery_state",
+      "signature": "agent_choice_state aal_pwrapper_choice_recovery_state()",
+      "category": "Choices",
+      "side_effects": "READ_ONLY",
+      "purpose": "Describe current choice and configured option without submitting it."
+    },
+    {
+      "source": "12",
+      "project": "pwrapper",
+      "url": "https://github.com/Prusias-kol/pwrapper",
+      "name": "aal_pwrapper_choice_recovery_preflight",
+      "signature": "agent_check aal_pwrapper_choice_recovery_preflight(boolean fail_unset)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Validate whether wrapper-style automatic choice recovery can proceed."
+    },
+    {
+      "source": "12",
+      "project": "pwrapper",
+      "url": "https://github.com/Prusias-kol/pwrapper",
+      "name": "aal_pwrapper_combat_recovery_state",
+      "signature": "string aal_pwrapper_combat_recovery_state()",
+      "category": "Combat",
+      "side_effects": "READ_ONLY",
+      "purpose": "Describe whether wrapper recovery is currently in combat-like state using tracked combat signals."
+    },
+    {
+      "source": "12",
+      "project": "pwrapper",
+      "url": "https://github.com/Prusias-kol/pwrapper",
+      "name": "aal_pwrapper_safe_state_check",
+      "signature": "agent_check aal_pwrapper_safe_state_check()",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Check a conservative safe-state condition: not in a choice and not Beaten Up."
+    },
+    {
+      "source": "12",
+      "project": "pwrapper",
+      "url": "https://github.com/Prusias-kol/pwrapper",
+      "name": "aal_pwrapper_completion_evidence",
+      "signature": "agent_check aal_pwrapper_completion_evidence(string event_list, string completion_token)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Check exact completion-token evidence in the wrapper's breakpoint list."
+    },
+    {
+      "source": "12",
+      "project": "pwrapper",
+      "url": "https://github.com/Prusias-kol/pwrapper",
+      "name": "aal_pwrapper_retry_decision",
+      "signature": "string aal_pwrapper_retry_decision(int attempt, int max_attempts, boolean completed, boolean safe_state)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Return the next wrapper action without executing it."
+    },
+    {
+      "source": "12",
+      "project": "pwrapper",
+      "url": "https://github.com/Prusias-kol/pwrapper",
+      "name": "aal_pwrapper_log_line",
+      "signature": "string aal_pwrapper_log_line(int attempt, string error_message, string last_encounter, string last_result)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Serialize one retry failure as a compact deterministic log line."
+    },
+    {
+      "source": "12",
+      "project": "pwrapper",
+      "url": "https://github.com/Prusias-kol/pwrapper",
+      "name": "aal_pwrapper_agent_context",
+      "signature": "string aal_pwrapper_agent_context(int attempt, int max_attempts, string event_list)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact wrapper/recovery context for an agent deciding whether to retry."
+    },
+    {
+      "source": "13",
+      "project": "ProfitTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ProfitTracking.ash",
+      "name": "aal_profit_liquid_meat",
+      "signature": "int aal_profit_liquid_meat()",
+      "category": "Finance",
+      "side_effects": "READ_ONLY",
+      "purpose": "Return liquid meat across inventory, closet, and storage."
+    },
+    {
+      "source": "13",
+      "project": "ProfitTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ProfitTracking.ash",
+      "name": "aal_profit_item_state",
+      "signature": "agent_item_state aal_profit_item_state(item it)",
+      "category": "Inventory",
+      "side_effects": "READ_ONLY",
+      "purpose": "Capture an item's quantities across major account locations."
+    },
+    {
+      "source": "13",
+      "project": "ProfitTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ProfitTracking.ash",
+      "name": "aal_profit_price_estimate",
+      "signature": "int aal_profit_price_estimate(item it, int max_historical_age)",
+      "category": "Items",
+      "side_effects": "READ_ONLY",
+      "purpose": "Estimate an item value with fresh historical price fallback to mall/autosell."
+    },
+    {
+      "source": "13",
+      "project": "ProfitTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ProfitTracking.ash",
+      "name": "aal_profit_inventory_value",
+      "signature": "int aal_profit_inventory_value(int max_historical_age)",
+      "category": "Finance",
+      "side_effects": "READ_ONLY",
+      "purpose": "Estimate total value of currently held inventory/closet/storage/display/shop/equipped items."
+    },
+    {
+      "source": "13",
+      "project": "ProfitTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ProfitTracking.ash",
+      "name": "aal_profit_snapshot",
+      "signature": "agent_value_snapshot aal_profit_snapshot(int stamp, int max_historical_age)",
+      "category": "Tracking",
+      "side_effects": "READ_ONLY",
+      "purpose": "Capture liquid meat, item value, total value, turns and caller timestamp."
+    },
+    {
+      "source": "13",
+      "project": "ProfitTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ProfitTracking.ash",
+      "name": "aal_profit_snapshot_delta",
+      "signature": "string aal_profit_snapshot_delta(agent_value_snapshot before, agent_value_snapshot after)",
+      "category": "Diff / Change Detection",
+      "side_effects": "PURE",
+      "purpose": "Serialize value/turn/time changes between two profit snapshots."
+    },
+    {
+      "source": "13",
+      "project": "ProfitTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ProfitTracking.ash",
+      "name": "aal_profit_value_per_turn",
+      "signature": "float aal_profit_value_per_turn(agent_value_snapshot before, agent_value_snapshot after)",
+      "category": "Analytics",
+      "side_effects": "PURE",
+      "purpose": "Compute total-value delta per turn."
+    },
+    {
+      "source": "13",
+      "project": "ProfitTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ProfitTracking.ash",
+      "name": "aal_profit_item_delta",
+      "signature": "agent_delta aal_profit_item_delta(item it, int before_total)",
+      "category": "Diff / Change Detection",
+      "side_effects": "READ_ONLY",
+      "purpose": "Compare current cross-location item total against an earlier captured total."
+    },
+    {
+      "source": "13",
+      "project": "ProfitTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ProfitTracking.ash",
+      "name": "aal_profit_top_inventory_context",
+      "signature": "string aal_profit_top_inventory_context(int min_unit_value, int max_entries, int max_historical_age)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Emit bounded valuable-item context without logging to disk."
+    },
+    {
+      "source": "13",
+      "project": "ProfitTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ProfitTracking.ash",
+      "name": "aal_profit_agent_context",
+      "signature": "string aal_profit_agent_context(agent_value_snapshot snap)",
+      "category": "LLM Context",
+      "side_effects": "PURE",
+      "purpose": "Serialize a profit snapshot as compact key=value state."
+    },
+    {
+      "source": "14",
+      "project": "TimeTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/TimeTracking.ash",
+      "name": "aal_time_elapsed_ms",
+      "signature": "int aal_time_elapsed_ms(int before_stamp, int after_stamp)",
+      "category": "Time",
+      "side_effects": "PURE",
+      "purpose": "Compute non-negative elapsed milliseconds between two stored timestamps."
+    },
+    {
+      "source": "14",
+      "project": "TimeTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/TimeTracking.ash",
+      "name": "aal_time_elapsed_seconds",
+      "signature": "float aal_time_elapsed_seconds(int before_stamp, int after_stamp)",
+      "category": "Time",
+      "side_effects": "PURE",
+      "purpose": "Compute elapsed seconds between stored millisecond timestamps."
+    },
+    {
+      "source": "14",
+      "project": "TimeTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/TimeTracking.ash",
+      "name": "aal_time_budget_state",
+      "signature": "agent_range_state aal_time_budget_state(int elapsed_ms, int budget_ms)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Describe elapsed-time budget consumption and remaining milliseconds."
+    },
+    {
+      "source": "14",
+      "project": "TimeTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/TimeTracking.ash",
+      "name": "aal_time_format_duration",
+      "signature": "string aal_time_format_duration(int elapsed_ms)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Format a millisecond duration as deterministic HH:MM:SS."
+    },
+    {
+      "source": "14",
+      "project": "TimeTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/TimeTracking.ash",
+      "name": "aal_time_turns_per_hour",
+      "signature": "float aal_time_turns_per_hour(int turns, int elapsed_ms)",
+      "category": "Analytics",
+      "side_effects": "PURE",
+      "purpose": "Calculate turn throughput for a timed interval."
+    },
+    {
+      "source": "14",
+      "project": "TimeTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/TimeTracking.ash",
+      "name": "aal_time_seconds_per_turn",
+      "signature": "float aal_time_seconds_per_turn(int turns, int elapsed_ms)",
+      "category": "Analytics",
+      "side_effects": "PURE",
+      "purpose": "Calculate average seconds per turn."
+    },
+    {
+      "source": "14",
+      "project": "TimeTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/TimeTracking.ash",
+      "name": "aal_time_pace_check",
+      "signature": "agent_check aal_time_pace_check(int turns, int elapsed_ms, float max_seconds_per_turn)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Check whether an interval stays under a caller-defined seconds-per-turn threshold."
+    },
+    {
+      "source": "14",
+      "project": "TimeTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/TimeTracking.ash",
+      "name": "aal_time_breakpoint_line",
+      "signature": "string aal_time_breakpoint_line(string date, string event, int stamp)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Serialize one time breakpoint as TSV."
+    },
+    {
+      "source": "14",
+      "project": "TimeTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/TimeTracking.ash",
+      "name": "aal_time_adjacent_durations",
+      "signature": "string aal_time_adjacent_durations(string[int] names, int[int] stamps)",
+      "category": "Diff / Change Detection",
+      "side_effects": "PURE",
+      "purpose": "Serialize elapsed time between adjacent named breakpoints."
+    },
+    {
+      "source": "14",
+      "project": "TimeTracking.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/TimeTracking.ash",
+      "name": "aal_time_agent_context",
+      "signature": "string aal_time_agent_context(string from_event, string to_event, int turns, int elapsed_ms)",
+      "category": "LLM Context",
+      "side_effects": "PURE",
+      "purpose": "Build compact timing/throughput context for an agent."
+    },
+    {
+      "source": "15",
+      "project": "ptrack.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ptrack.ash",
+      "name": "aal_ptrackcli_parse_breakpoints",
+      "signature": "string aal_ptrackcli_parse_breakpoints(string event_list)",
+      "category": "Normalization",
+      "side_effects": "PURE",
+      "purpose": "Normalize the pTrack breakpoint property into one event per line."
+    },
+    {
+      "source": "15",
+      "project": "ptrack.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ptrack.ash",
+      "name": "aal_ptrackcli_breakpoint_count",
+      "signature": "int aal_ptrackcli_breakpoint_count(string event_list)",
+      "category": "Query",
+      "side_effects": "PURE",
+      "purpose": "Count non-empty breakpoints in an event-list property."
+    },
+    {
+      "source": "15",
+      "project": "ptrack.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ptrack.ash",
+      "name": "aal_ptrackcli_breakpoint_exists",
+      "signature": "boolean aal_ptrackcli_breakpoint_exists(string event_list, string name)",
+      "category": "Query",
+      "side_effects": "PURE",
+      "purpose": "Test exact breakpoint membership."
+    },
+    {
+      "source": "15",
+      "project": "ptrack.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ptrack.ash",
+      "name": "aal_ptrackcli_breakpoint_duplicates",
+      "signature": "string aal_ptrackcli_breakpoint_duplicates(string event_list)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Report duplicate breakpoint names that could confuse interval comparisons."
+    },
+    {
+      "source": "15",
+      "project": "ptrack.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ptrack.ash",
+      "name": "aal_ptrackcli_compare_plan",
+      "signature": "string aal_ptrackcli_compare_plan(string event_list)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Generate all adjacent comparison pairs from the current breakpoint order."
+    },
+    {
+      "source": "15",
+      "project": "ptrack.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ptrack.ash",
+      "name": "aal_ptrackcli_reset_check",
+      "signature": "agent_check aal_ptrackcli_reset_check(string stored_date)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Check whether daily tracking should be reset based on KoL date."
+    },
+    {
+      "source": "15",
+      "project": "ptrack.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ptrack.ash",
+      "name": "aal_ptrackcli_name_validate",
+      "signature": "agent_check aal_ptrackcli_name_validate(string breakpoint_name)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Validate breakpoint names for comma-delimited storage."
+    },
+    {
+      "source": "15",
+      "project": "ptrack.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ptrack.ash",
+      "name": "aal_ptrackcli_next_breakpoint",
+      "signature": "string aal_ptrackcli_next_breakpoint(string event_list, string[int] expected_order)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Return first expected breakpoint not yet present."
+    },
+    {
+      "source": "15",
+      "project": "ptrack.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ptrack.ash",
+      "name": "aal_ptrackcli_summary",
+      "signature": "string aal_ptrackcli_summary(string event_list)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Serialize breakpoint-list health and endpoints."
+    },
+    {
+      "source": "15",
+      "project": "ptrack.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/ptrack.ash",
+      "name": "aal_ptrackcli_agent_context",
+      "signature": "string aal_ptrackcli_agent_context(string event_list, string stored_date)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact user-facing tracker orchestration context."
+    },
+    {
+      "source": "16",
+      "project": "pChecklist",
+      "url": "https://github.com/Prusias-kol/pChecklist",
+      "name": "aal_checklist_total_owned",
+      "signature": "int aal_checklist_total_owned(item it)",
+      "category": "Inventory",
+      "side_effects": "READ_ONLY",
+      "purpose": "Count an item across inventory, closet, display, equipment, shop, and storage."
+    },
+    {
+      "source": "16",
+      "project": "pChecklist",
+      "url": "https://github.com/Prusias-kol/pChecklist",
+      "name": "aal_checklist_item_state",
+      "signature": "agent_item_state aal_checklist_item_state(item it)",
+      "category": "Inventory",
+      "side_effects": "READ_ONLY",
+      "purpose": "Capture checklist ownership state across storage locations."
+    },
+    {
+      "source": "16",
+      "project": "pChecklist",
+      "url": "https://github.com/Prusias-kol/pChecklist",
+      "name": "aal_checklist_item_check",
+      "signature": "agent_check aal_checklist_item_check(item it, int required)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Check whether cross-location ownership satisfies a required checklist quantity."
+    },
+    {
+      "source": "16",
+      "project": "pChecklist",
+      "url": "https://github.com/Prusias-kol/pChecklist",
+      "name": "aal_checklist_range_missing",
+      "signature": "string aal_checklist_range_missing(int first_id, int last_id, int max_entries)",
+      "category": "Inventory",
+      "side_effects": "READ_ONLY",
+      "purpose": "List missing valid items from an inclusive item-ID range."
+    },
+    {
+      "source": "16",
+      "project": "pChecklist",
+      "url": "https://github.com/Prusias-kol/pChecklist",
+      "name": "aal_checklist_custom_missing",
+      "signature": "string aal_checklist_custom_missing(item[int] items, int max_entries)",
+      "category": "Inventory",
+      "side_effects": "READ_ONLY",
+      "purpose": "List missing items from a caller-defined checklist."
+    },
+    {
+      "source": "16",
+      "project": "pChecklist",
+      "url": "https://github.com/Prusias-kol/pChecklist",
+      "name": "aal_checklist_completion_ratio",
+      "signature": "float aal_checklist_completion_ratio(item[int] items)",
+      "category": "Analytics",
+      "side_effects": "READ_ONLY",
+      "purpose": "Calculate fraction of valid checklist items owned at least once."
+    },
+    {
+      "source": "16",
+      "project": "pChecklist",
+      "url": "https://github.com/Prusias-kol/pChecklist",
+      "name": "aal_checklist_duplicate_ids",
+      "signature": "string aal_checklist_duplicate_ids(int[int] ids)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Report duplicate item IDs in a custom checklist definition."
+    },
+    {
+      "source": "16",
+      "project": "pChecklist",
+      "url": "https://github.com/Prusias-kol/pChecklist",
+      "name": "aal_checklist_status_tsv",
+      "signature": "string aal_checklist_status_tsv(item[int] items, int max_entries)",
+      "category": "Serialization",
+      "side_effects": "READ_ONLY",
+      "purpose": "Serialize checklist item status in deterministic input order."
+    },
+    {
+      "source": "16",
+      "project": "pChecklist",
+      "url": "https://github.com/Prusias-kol/pChecklist",
+      "name": "aal_checklist_missing_value",
+      "signature": "int aal_checklist_missing_value(item[int] items)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Estimate mall acquisition value of currently missing tradeable checklist items without buying them."
+    },
+    {
+      "source": "16",
+      "project": "pChecklist",
+      "url": "https://github.com/Prusias-kol/pChecklist",
+      "name": "aal_checklist_agent_context",
+      "signature": "string aal_checklist_agent_context(string checklist_name, item[int] items, int max_entries)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact checklist completion/missing context for an agent."
+    },
+    {
+      "source": "17",
+      "project": "pStash",
+      "url": "https://github.com/Prusias-kol/pStash",
+      "name": "aal_stash_state",
+      "signature": "agent_stash_state aal_stash_state(item it, int expected, boolean personal_overlap)",
+      "category": "Stash",
+      "side_effects": "READ_ONLY",
+      "purpose": "Capture expected versus current stash quantity with personal-overlap marker."
+    },
+    {
+      "source": "17",
+      "project": "pStash",
+      "url": "https://github.com/Prusias-kol/pStash",
+      "name": "aal_stash_deficit",
+      "signature": "int aal_stash_deficit(item it, int expected)",
+      "category": "Stash",
+      "side_effects": "READ_ONLY",
+      "purpose": "Return number missing from stash relative to a baseline."
+    },
+    {
+      "source": "17",
+      "project": "pStash",
+      "url": "https://github.com/Prusias-kol/pStash",
+      "name": "aal_stash_surplus",
+      "signature": "int aal_stash_surplus(item it, int expected)",
+      "category": "Stash",
+      "side_effects": "READ_ONLY",
+      "purpose": "Return surplus above a recorded stash baseline."
+    },
+    {
+      "source": "17",
+      "project": "pStash",
+      "url": "https://github.com/Prusias-kol/pStash",
+      "name": "aal_stash_verify",
+      "signature": "agent_check aal_stash_verify(item it, int expected)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Validate a single stash baseline."
+    },
+    {
+      "source": "17",
+      "project": "pStash",
+      "url": "https://github.com/Prusias-kol/pStash",
+      "name": "aal_stash_return_preview",
+      "signature": "agent_action_preview aal_stash_return_preview(item it, int expected, int personal_owned)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Preview how many inventory copies could be returned without crossing a personal-ownership protection floor."
+    },
+    {
+      "source": "17",
+      "project": "pStash",
+      "url": "https://github.com/Prusias-kol/pStash",
+      "name": "aal_stash_map_summary",
+      "signature": "string aal_stash_map_summary(int[item] expected)",
+      "category": "Serialization",
+      "side_effects": "READ_ONLY",
+      "purpose": "Serialize expected/actual/delta for a tracked stash map."
+    },
+    {
+      "source": "17",
+      "project": "pStash",
+      "url": "https://github.com/Prusias-kol/pStash",
+      "name": "aal_stash_missing_count",
+      "signature": "int aal_stash_missing_count(int[item] expected)",
+      "category": "Analytics",
+      "side_effects": "READ_ONLY",
+      "purpose": "Count tracked stash entries below baseline."
+    },
+    {
+      "source": "17",
+      "project": "pStash",
+      "url": "https://github.com/Prusias-kol/pStash",
+      "name": "aal_stash_personal_overlap",
+      "signature": "agent_check aal_stash_personal_overlap(item it, int personal_baseline)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Check whether current personal ownership is at/below a recorded personal floor."
+    },
+    {
+      "source": "17",
+      "project": "pStash",
+      "url": "https://github.com/Prusias-kol/pStash",
+      "name": "aal_stash_reconcile_plan",
+      "signature": "string aal_stash_reconcile_plan(int[item] expected, int[item] personal_baseline, int max_entries)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build bounded reconciliation recommendations without moving stash items."
+    },
+    {
+      "source": "17",
+      "project": "pStash",
+      "url": "https://github.com/Prusias-kol/pStash",
+      "name": "aal_stash_agent_context",
+      "signature": "string aal_stash_agent_context(int[item] expected, int max_entries)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact stash health context centered on deficits/surpluses."
+    },
+    {
+      "source": "18",
+      "project": "Guide",
+      "url": "https://github.com/Ezandora/Guide",
+      "name": "aal_guide_task_line",
+      "signature": "string aal_guide_task_line(string title, string status, string url, int priority)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Serialize a Guide-inspired task entry for machine consumption."
+    },
+    {
+      "source": "18",
+      "project": "Guide",
+      "url": "https://github.com/Ezandora/Guide",
+      "name": "aal_guide_resource_line",
+      "signature": "string aal_guide_resource_line(string title, int remaining, string url)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Serialize a Guide-inspired daily-resource entry."
+    },
+    {
+      "source": "18",
+      "project": "Guide",
+      "url": "https://github.com/Ezandora/Guide",
+      "name": "aal_guide_quest_property",
+      "signature": "string aal_guide_quest_property(string quest_property)",
+      "category": "Quests",
+      "side_effects": "READ_ONLY",
+      "purpose": "Expose one KoLmafia quest preference in normalized lowercase form."
+    },
+    {
+      "source": "18",
+      "project": "Guide",
+      "url": "https://github.com/Ezandora/Guide",
+      "name": "aal_guide_quest_status_check",
+      "signature": "agent_check aal_guide_quest_status_check(string quest_property, string expected_state)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Compare a quest preference with an expected state."
+    },
+    {
+      "source": "18",
+      "project": "Guide",
+      "url": "https://github.com/Ezandora/Guide",
+      "name": "aal_guide_resource_from_property",
+      "signature": "agent_resource_state aal_guide_resource_from_property(string label, string used_property, int limit_value)",
+      "category": "Resources",
+      "side_effects": "READ_ONLY",
+      "purpose": "Convert a Guide-like daily counter into a structured remaining-resource record."
+    },
+    {
+      "source": "18",
+      "project": "Guide",
+      "url": "https://github.com/Ezandora/Guide",
+      "name": "aal_guide_location_task",
+      "signature": "agent_plan aal_guide_location_task(location loc, string title)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Describe whether a location-based task is currently actionable."
+    },
+    {
+      "source": "18",
+      "project": "Guide",
+      "url": "https://github.com/Ezandora/Guide",
+      "name": "aal_guide_task_filter",
+      "signature": "string aal_guide_task_filter(string[int] tasks, string query, int max_entries)",
+      "category": "Query",
+      "side_effects": "PURE",
+      "purpose": "Filter/bound task text for a user or LLM query."
+    },
+    {
+      "source": "18",
+      "project": "Guide",
+      "url": "https://github.com/Ezandora/Guide",
+      "name": "aal_guide_future_task",
+      "signature": "agent_check aal_guide_future_task(string title, boolean unlocked, boolean completed, string prerequisite)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Represent future/optional task state without executing it."
+    },
+    {
+      "source": "18",
+      "project": "Guide",
+      "url": "https://github.com/Ezandora/Guide",
+      "name": "aal_guide_advisory_merge",
+      "signature": "string aal_guide_advisory_merge(string[int] mandatory, string[int] optional, string[int] future, int max_each)",
+      "category": "LLM Context",
+      "side_effects": "PURE",
+      "purpose": "Merge Guide-like task lanes into bounded labeled context."
+    },
+    {
+      "source": "18",
+      "project": "Guide",
+      "url": "https://github.com/Ezandora/Guide",
+      "name": "aal_guide_agent_context",
+      "signature": "string aal_guide_agent_context(string[int] quest_properties, int max_entries)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact quest-preference context using Guide's advisory orientation."
+    },
+    {
+      "source": "19",
+      "project": "Ezandora Gain",
+      "url": "https://github.com/Ezandora/Gain",
+      "name": "aal_gain_modifier_state",
+      "signature": "agent_modifier_state aal_gain_modifier_state(string modifier_name, float target)",
+      "category": "Modifiers",
+      "side_effects": "READ_ONLY",
+      "purpose": "Capture current modifier value and target gap."
+    },
+    {
+      "source": "19",
+      "project": "Ezandora Gain",
+      "url": "https://github.com/Ezandora/Gain",
+      "name": "aal_gain_effect_modifier",
+      "signature": "float aal_gain_effect_modifier(effect e, string modifier_name)",
+      "category": "Modifiers",
+      "side_effects": "READ_ONLY",
+      "purpose": "Read one effect's contribution to a modifier."
+    },
+    {
+      "source": "19",
+      "project": "Ezandora Gain",
+      "url": "https://github.com/Ezandora/Gain",
+      "name": "aal_gain_effect_efficiency",
+      "signature": "float aal_gain_effect_efficiency(effect e, string modifier_name, int turns, int estimated_cost)",
+      "category": "Analytics",
+      "side_effects": "READ_ONLY",
+      "purpose": "Compute simple cost per modifier-turn for an effect candidate."
+    },
+    {
+      "source": "19",
+      "project": "Ezandora Gain",
+      "url": "https://github.com/Ezandora/Gain",
+      "name": "aal_gain_conflict_hint",
+      "signature": "string aal_gain_conflict_hint(effect desired, effect[int] exclusive_set)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Report active mutually-exclusive effects from a caller-supplied conflict set."
+    },
+    {
+      "source": "19",
+      "project": "Ezandora Gain",
+      "url": "https://github.com/Ezandora/Gain",
+      "name": "aal_gain_limited_effect_check",
+      "signature": "agent_check aal_gain_limited_effect_check(effect e, boolean allow_limited)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Apply explicit limited-effect policy to a candidate."
+    },
+    {
+      "source": "19",
+      "project": "Ezandora Gain",
+      "url": "https://github.com/Ezandora/Gain",
+      "name": "aal_gain_item_source_cost",
+      "signature": "int aal_gain_item_source_cost(item it)",
+      "category": "Items",
+      "side_effects": "READ_ONLY",
+      "purpose": "Estimate acquisition cost of an item source without acquiring it."
+    },
+    {
+      "source": "19",
+      "project": "Ezandora Gain",
+      "url": "https://github.com/Ezandora/Gain",
+      "name": "aal_gain_skill_source_cost",
+      "signature": "int aal_gain_skill_source_cost(skill s, int meat_per_mp)",
+      "category": "Skills",
+      "side_effects": "READ_ONLY",
+      "purpose": "Estimate a skill buff's MP opportunity cost."
+    },
+    {
+      "source": "19",
+      "project": "Ezandora Gain",
+      "url": "https://github.com/Ezandora/Gain",
+      "name": "aal_gain_simulate_additive",
+      "signature": "float aal_gain_simulate_additive(string modifier_name, float additional_value)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Compute a simple non-mutating additive modifier simulation."
+    },
+    {
+      "source": "19",
+      "project": "Ezandora Gain",
+      "url": "https://github.com/Ezandora/Gain",
+      "name": "aal_gain_candidate_score",
+      "signature": "float aal_gain_candidate_score(float modifier_gain, int turns, int cost)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Score a modifier source by gain-turns per meat; higher is better."
+    },
+    {
+      "source": "19",
+      "project": "Ezandora Gain",
+      "url": "https://github.com/Ezandora/Gain",
+      "name": "aal_gain_agent_context",
+      "signature": "string aal_gain_agent_context(string modifier_name, float target, int max_effects)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build bounded context of current modifier and active effects contributing to it."
+    },
+    {
+      "source": "20",
+      "project": "Astro3207 Gain",
+      "url": "https://github.com/Astro3207/Gain",
+      "name": "aal_astrogain_modifier_names",
+      "signature": "string aal_astrogain_modifier_names(effect e)",
+      "category": "Modifiers",
+      "side_effects": "READ_ONLY",
+      "purpose": "Parse an effect's Modifiers string into normalized modifier names."
+    },
+    {
+      "source": "20",
+      "project": "Astro3207 Gain",
+      "url": "https://github.com/Astro3207/Gain",
+      "name": "aal_astrogain_percentage_stat_value",
+      "signature": "float aal_astrogain_percentage_stat_value(effect e, stat s)",
+      "category": "Modifiers",
+      "side_effects": "READ_ONLY",
+      "purpose": "Combine flat and percent stat modifiers against current base stat for planning."
+    },
+    {
+      "source": "20",
+      "project": "Astro3207 Gain",
+      "url": "https://github.com/Astro3207/Gain",
+      "name": "aal_astrogain_dynamic_modifier_hint",
+      "signature": "agent_check aal_astrogain_dynamic_modifier_hint(effect e)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Flag effect modifier text that contains bracket/quoted expressions and should not be blindly cached."
+    },
+    {
+      "source": "20",
+      "project": "Astro3207 Gain",
+      "url": "https://github.com/Astro3207/Gain",
+      "name": "aal_astrogain_effect_source_items",
+      "signature": "string aal_astrogain_effect_source_items(effect e, int max_entries)",
+      "category": "Capability Discovery",
+      "side_effects": "READ_ONLY",
+      "purpose": "Find bounded item sources whose Effect modifier matches the requested effect."
+    },
+    {
+      "source": "20",
+      "project": "Astro3207 Gain",
+      "url": "https://github.com/Astro3207/Gain",
+      "name": "aal_astrogain_effect_source_skills",
+      "signature": "string aal_astrogain_effect_source_skills(effect e, int max_entries)",
+      "category": "Capability Discovery",
+      "side_effects": "READ_ONLY",
+      "purpose": "Find bounded skill sources that map to the requested effect."
+    },
+    {
+      "source": "20",
+      "project": "Astro3207 Gain",
+      "url": "https://github.com/Astro3207/Gain",
+      "name": "aal_astrogain_combat_rate_softcap",
+      "signature": "float aal_astrogain_combat_rate_softcap(float current, float raw_delta)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Approximate Gain-style combat-rate soft-cap conversion for simulation."
+    },
+    {
+      "source": "20",
+      "project": "Astro3207 Gain",
+      "url": "https://github.com/Astro3207/Gain",
+      "name": "aal_astrogain_source_efficiency",
+      "signature": "float aal_astrogain_source_efficiency(float modifier_value, int turns, int meat_cost, int mp_cost_value, int meat_per_mp)",
+      "category": "Analytics",
+      "side_effects": "PURE",
+      "purpose": "Score a buff source with combined item/meat and MP opportunity costs."
+    },
+    {
+      "source": "20",
+      "project": "Astro3207 Gain",
+      "url": "https://github.com/Astro3207/Gain",
+      "name": "aal_astrogain_mutual_exclusion_state",
+      "signature": "string aal_astrogain_mutual_exclusion_state(effect[int] set_members)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "List active effects in one caller-defined mutually exclusive set."
+    },
+    {
+      "source": "20",
+      "project": "Astro3207 Gain",
+      "url": "https://github.com/Astro3207/Gain",
+      "name": "aal_astrogain_source_rank_line",
+      "signature": "string aal_astrogain_source_rank_line(string source_name, float efficiency, float modifier_value, int turns)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Serialize a modifier-source ranking row for external sorting/LLM consumption."
+    },
+    {
+      "source": "20",
+      "project": "Astro3207 Gain",
+      "url": "https://github.com/Astro3207/Gain",
+      "name": "aal_astrogain_agent_context",
+      "signature": "string aal_astrogain_agent_context(effect e, string modifier_name)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build effect/source/modifier context suitable for an agent planning buff acquisition."
+    },
+    {
+      "source": "21",
+      "project": "Consume",
+      "url": "https://github.com/Ezandora/Consume",
+      "name": "aal_consume_organ_state",
+      "signature": "agent_organ_state aal_consume_organ_state()",
+      "category": "Consumption",
+      "side_effects": "READ_ONLY",
+      "purpose": "Capture current fullness, inebriety, and spleen usage/limits."
+    },
+    {
+      "source": "21",
+      "project": "Consume",
+      "url": "https://github.com/Ezandora/Consume",
+      "name": "aal_consume_organ_remaining",
+      "signature": "int aal_consume_organ_remaining(string organ_name)",
+      "category": "Consumption",
+      "side_effects": "READ_ONLY",
+      "purpose": "Return remaining capacity for fullness, liver, or spleen by normalized organ name."
+    },
+    {
+      "source": "21",
+      "project": "Consume",
+      "url": "https://github.com/Ezandora/Consume",
+      "name": "aal_consume_candidate",
+      "signature": "agent_consumption_candidate aal_consume_candidate(item it, int size, float expected_adventures, int price)",
+      "category": "Consumption",
+      "side_effects": "PURE",
+      "purpose": "Create a normalized consumable candidate with density/value fields."
+    },
+    {
+      "source": "21",
+      "project": "Consume",
+      "url": "https://github.com/Ezandora/Consume",
+      "name": "aal_consume_candidate_fits",
+      "signature": "boolean aal_consume_candidate_fits(agent_consumption_candidate c, string organ_name)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Check whether a candidate fits the requested organ's remaining capacity."
+    },
+    {
+      "source": "21",
+      "project": "Consume",
+      "url": "https://github.com/Ezandora/Consume",
+      "name": "aal_consume_candidate_value",
+      "signature": "float aal_consume_candidate_value(agent_consumption_candidate c, int value_of_adventure)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Estimate net adventure value after purchase cost."
+    },
+    {
+      "source": "21",
+      "project": "Consume",
+      "url": "https://github.com/Ezandora/Consume",
+      "name": "aal_consume_candidate_density",
+      "signature": "float aal_consume_candidate_density(agent_consumption_candidate c, int value_of_adventure)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Estimate net value per organ point."
+    },
+    {
+      "source": "21",
+      "project": "Consume",
+      "url": "https://github.com/Ezandora/Consume",
+      "name": "aal_consume_budget_check",
+      "signature": "agent_check aal_consume_budget_check(agent_consumption_candidate c, int meat_budget)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Check candidate price against a caller budget."
+    },
+    {
+      "source": "21",
+      "project": "Consume",
+      "url": "https://github.com/Ezandora/Consume",
+      "name": "aal_consume_overdrink_risk",
+      "signature": "agent_check aal_consume_overdrink_risk(int drink_size)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Describe whether consuming a drink of the given size would exceed the normal liver limit."
+    },
+    {
+      "source": "21",
+      "project": "Consume",
+      "url": "https://github.com/Ezandora/Consume",
+      "name": "aal_consume_plan_line",
+      "signature": "string aal_consume_plan_line(agent_consumption_candidate c, string organ_name, int value_of_adventure)",
+      "category": "Serialization",
+      "side_effects": "READ_ONLY",
+      "purpose": "Serialize a candidate's fit and economic density for planner/agent sorting."
+    },
+    {
+      "source": "21",
+      "project": "Consume",
+      "url": "https://github.com/Ezandora/Consume",
+      "name": "aal_consume_agent_context",
+      "signature": "string aal_consume_agent_context(int value_of_adventure)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact organ/value context for a consumption planner."
+    },
+    {
+      "source": "22",
+      "project": "networth.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/networth.ash",
+      "name": "aal_networth_unit_price",
+      "signature": "int aal_networth_unit_price(item it, int max_historical_age, int historical_cap)",
+      "category": "Finance",
+      "side_effects": "READ_ONLY",
+      "purpose": "Modernize networth.ash pricing: autosell for untradeable, fresh historical price when sane, otherwise mall."
+    },
+    {
+      "source": "22",
+      "project": "networth.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/networth.ash",
+      "name": "aal_networth_quantity",
+      "signature": "int aal_networth_quantity(item it, boolean include_storage)",
+      "category": "Inventory",
+      "side_effects": "READ_ONLY",
+      "purpose": "Count relevant item copies for a net-worth calculation."
+    },
+    {
+      "source": "22",
+      "project": "networth.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/networth.ash",
+      "name": "aal_networth_item_value",
+      "signature": "int aal_networth_item_value(item it, boolean include_storage, int max_historical_age, int historical_cap)",
+      "category": "Finance",
+      "side_effects": "READ_ONLY",
+      "purpose": "Value one item's included quantity with the normalized unit-price heuristic."
+    },
+    {
+      "source": "22",
+      "project": "networth.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/networth.ash",
+      "name": "aal_networth_location_value",
+      "signature": "int aal_networth_location_value(item it, string location_name, int max_historical_age, int historical_cap)",
+      "category": "Finance",
+      "side_effects": "READ_ONLY",
+      "purpose": "Value one item in one named account location for explainable net-worth decomposition."
+    },
+    {
+      "source": "22",
+      "project": "networth.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/networth.ash",
+      "name": "aal_networth_inventory_value",
+      "signature": "int aal_networth_inventory_value(boolean include_storage, int max_historical_age, int historical_cap)",
+      "category": "Finance",
+      "side_effects": "READ_ONLY",
+      "purpose": "Estimate total item value across the source-inspired account locations."
+    },
+    {
+      "source": "22",
+      "project": "networth.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/networth.ash",
+      "name": "aal_networth_total",
+      "signature": "int aal_networth_total(boolean include_storage, int max_historical_age, int historical_cap)",
+      "category": "Finance",
+      "side_effects": "READ_ONLY",
+      "purpose": "Estimate liquid meat plus item value."
+    },
+    {
+      "source": "22",
+      "project": "networth.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/networth.ash",
+      "name": "aal_networth_item_line",
+      "signature": "string aal_networth_item_line(item it, boolean include_storage, int max_historical_age, int historical_cap)",
+      "category": "Serialization",
+      "side_effects": "READ_ONLY",
+      "purpose": "Serialize one item's net-worth contribution."
+    },
+    {
+      "source": "22",
+      "project": "networth.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/networth.ash",
+      "name": "aal_networth_value_floor",
+      "signature": "int aal_networth_value_floor(item it)",
+      "category": "Finance",
+      "side_effects": "READ_ONLY",
+      "purpose": "Return a conservative non-negative value floor from autosell/NPC pricing."
+    },
+    {
+      "source": "22",
+      "project": "networth.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/networth.ash",
+      "name": "aal_networth_snapshot",
+      "signature": "agent_value_snapshot aal_networth_snapshot(boolean include_storage, int max_historical_age, int historical_cap, int stamp)",
+      "category": "Tracking",
+      "side_effects": "READ_ONLY",
+      "purpose": "Capture a net-worth snapshot suitable for later delta comparison."
+    },
+    {
+      "source": "22",
+      "project": "networth.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/networth.ash",
+      "name": "aal_networth_agent_context",
+      "signature": "string aal_networth_agent_context(boolean include_storage, int max_historical_age, int historical_cap)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact valuation policy/current-total context."
+    },
+    {
+      "source": "23",
+      "project": "rollover.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/rollover.ash",
+      "name": "aal_rollover_organ_gaps",
+      "signature": "string aal_rollover_organ_gaps()",
+      "category": "Rollover",
+      "side_effects": "READ_ONLY",
+      "purpose": "Serialize unused organ capacity before rollover."
+    },
+    {
+      "source": "23",
+      "project": "rollover.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/rollover.ash",
+      "name": "aal_rollover_mp_waste",
+      "signature": "int aal_rollover_mp_waste(int expected_rollover_mp)",
+      "category": "Rollover",
+      "side_effects": "READ_ONLY",
+      "purpose": "Estimate rollover MP that would exceed current maximum MP."
+    },
+    {
+      "source": "23",
+      "project": "rollover.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/rollover.ash",
+      "name": "aal_rollover_still_state",
+      "signature": "agent_resource_state aal_rollover_still_state()",
+      "category": "Resources",
+      "side_effects": "READ_ONLY",
+      "purpose": "Expose remaining still uses as a rollover resource."
+    },
+    {
+      "source": "23",
+      "project": "rollover.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/rollover.ash",
+      "name": "aal_rollover_pull_state",
+      "signature": "agent_resource_state aal_rollover_pull_state()",
+      "category": "Resources",
+      "side_effects": "READ_ONLY",
+      "purpose": "Expose remaining pulls as rollover context."
+    },
+    {
+      "source": "23",
+      "project": "rollover.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/rollover.ash",
+      "name": "aal_rollover_wand_candidate",
+      "signature": "item aal_rollover_wand_candidate()",
+      "category": "Items",
+      "side_effects": "READ_ONLY",
+      "purpose": "Return the first known wand item currently available."
+    },
+    {
+      "source": "23",
+      "project": "rollover.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/rollover.ash",
+      "name": "aal_rollover_daily_resource",
+      "signature": "agent_resource_state aal_rollover_daily_resource(string label, string used_property, int limit_value)",
+      "category": "Resources",
+      "side_effects": "READ_ONLY",
+      "purpose": "Normalize a rollover-relevant daily preference into remaining-use state."
+    },
+    {
+      "source": "23",
+      "project": "rollover.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/rollover.ash",
+      "name": "aal_rollover_readiness_score",
+      "signature": "int aal_rollover_readiness_score(int expected_rollover_mp)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Compute a simple reminder pressure score from organ gaps, MP waste, stills, and pulls."
+    },
+    {
+      "source": "23",
+      "project": "rollover.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/rollover.ash",
+      "name": "aal_rollover_warning_lines",
+      "signature": "string aal_rollover_warning_lines(int expected_rollover_mp)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build deterministic rollover warnings without changing equipment/resources."
+    },
+    {
+      "source": "23",
+      "project": "rollover.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/rollover.ash",
+      "name": "aal_rollover_ready_check",
+      "signature": "agent_check aal_rollover_ready_check(int expected_rollover_mp)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Return ready only when the source-inspired warning set is empty."
+    },
+    {
+      "source": "23",
+      "project": "rollover.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/rollover.ash",
+      "name": "aal_rollover_agent_context",
+      "signature": "string aal_rollover_agent_context(int expected_rollover_mp)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact rollover state for an agent/user reminder surface."
+    },
+    {
+      "source": "24",
+      "project": "testout.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/testout.ash",
+      "name": "aal_testout_bool",
+      "signature": "agent_diagnostic aal_testout_bool(string name, boolean actual, boolean expected)",
+      "category": "Debugging",
+      "side_effects": "PURE",
+      "purpose": "Create a structured boolean smoke-test result."
+    },
+    {
+      "source": "24",
+      "project": "testout.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/testout.ash",
+      "name": "aal_testout_cardinality",
+      "signature": "agent_diagnostic aal_testout_cardinality(string name, int actual_count, int minimum_count, int maximum_count)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Create a structured collection-cardinality diagnostic with explicit bounds."
+    },
+    {
+      "source": "24",
+      "project": "testout.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/testout.ash",
+      "name": "aal_testout_required_keys",
+      "signature": "agent_diagnostic aal_testout_required_keys(string name, string[string] fields, string[int] required_keys)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Validate that a string map contains every required schema key and report missing keys."
+    },
+    {
+      "source": "24",
+      "project": "testout.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/testout.ash",
+      "name": "aal_testout_range",
+      "signature": "agent_diagnostic aal_testout_range(string name, float actual, float minimum, float maximum)",
+      "category": "Debugging",
+      "side_effects": "PURE",
+      "purpose": "Create a diagnostic for an inclusive numeric range."
+    },
+    {
+      "source": "24",
+      "project": "testout.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/testout.ash",
+      "name": "aal_testout_line",
+      "signature": "string aal_testout_line(agent_diagnostic d)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Serialize a diagnostic in compact TSV form."
+    },
+    {
+      "source": "24",
+      "project": "testout.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/testout.ash",
+      "name": "aal_testout_assertion_count",
+      "signature": "int aal_testout_assertion_count(agent_diagnostic[int] results, boolean passed)",
+      "category": "Debugging",
+      "side_effects": "PURE",
+      "purpose": "Count passing or failing diagnostics."
+    },
+    {
+      "source": "24",
+      "project": "testout.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/testout.ash",
+      "name": "aal_testout_summary",
+      "signature": "string aal_testout_summary(agent_diagnostic[int] results)",
+      "category": "Debugging",
+      "side_effects": "PURE",
+      "purpose": "Summarize diagnostic pass/fail counts."
+    },
+    {
+      "source": "24",
+      "project": "testout.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/testout.ash",
+      "name": "aal_testout_failures",
+      "signature": "string aal_testout_failures(agent_diagnostic[int] results, int max_entries)",
+      "category": "Debugging",
+      "side_effects": "PURE",
+      "purpose": "Emit bounded failing diagnostic rows."
+    },
+    {
+      "source": "24",
+      "project": "testout.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/testout.ash",
+      "name": "aal_testout_runtime_probe",
+      "signature": "string aal_testout_runtime_probe()",
+      "category": "Debugging",
+      "side_effects": "READ_ONLY",
+      "purpose": "Capture a harmless runtime probe replacing the original one-line vprint smoke idea with structured state."
+    },
+    {
+      "source": "24",
+      "project": "testout.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/testout.ash",
+      "name": "aal_testout_agent_context",
+      "signature": "string aal_testout_agent_context(agent_diagnostic[int] results)",
+      "category": "LLM Context",
+      "side_effects": "PURE",
+      "purpose": "Build concise machine-readable test context."
+    },
+    {
+      "source": "25",
+      "project": "bootstrap.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/bootstrap.ash",
+      "name": "aal_bootstrap_starter_items",
+      "signature": "string aal_bootstrap_starter_items()",
+      "category": "Ascension",
+      "side_effects": "PURE",
+      "purpose": "Return the legacy bootstrap's starter-item targets in deterministic order."
+    },
+    {
+      "source": "25",
+      "project": "bootstrap.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/bootstrap.ash",
+      "name": "aal_bootstrap_item_state",
+      "signature": "string aal_bootstrap_item_state(item it)",
+      "category": "Inventory",
+      "side_effects": "READ_ONLY",
+      "purpose": "Describe inventory/storage availability of a bootstrap target."
+    },
+    {
+      "source": "25",
+      "project": "bootstrap.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/bootstrap.ash",
+      "name": "aal_bootstrap_pull_need",
+      "signature": "int aal_bootstrap_pull_need(item it, int required)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Calculate how many copies would need to be pulled from storage to meet a bootstrap requirement."
+    },
+    {
+      "source": "25",
+      "project": "bootstrap.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/bootstrap.ash",
+      "name": "aal_bootstrap_use_preview",
+      "signature": "agent_action_preview aal_bootstrap_use_preview(item it)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Preview whether a starter item is currently in inventory for use."
+    },
+    {
+      "source": "25",
+      "project": "bootstrap.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/bootstrap.ash",
+      "name": "aal_bootstrap_meatcar_state",
+      "signature": "string aal_bootstrap_meatcar_state()",
+      "category": "Ascension",
+      "side_effects": "READ_ONLY",
+      "purpose": "Describe whether the meatcar is owned or creatable before attempting construction."
+    },
+    {
+      "source": "25",
+      "project": "bootstrap.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/bootstrap.ash",
+      "name": "aal_bootstrap_radio_state",
+      "signature": "string aal_bootstrap_radio_state()",
+      "category": "Ascension",
+      "side_effects": "READ_ONLY",
+      "purpose": "Describe detuned-radio ownership and NPC price context."
+    },
+    {
+      "source": "25",
+      "project": "bootstrap.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/bootstrap.ash",
+      "name": "aal_bootstrap_step_status",
+      "signature": "string aal_bootstrap_step_status(string step_name, boolean complete, string evidence)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Serialize one bootstrap step and its evidence."
+    },
+    {
+      "source": "25",
+      "project": "bootstrap.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/bootstrap.ash",
+      "name": "aal_bootstrap_missing_steps",
+      "signature": "string aal_bootstrap_missing_steps()",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "List obvious remaining bootstrap targets without executing them."
+    },
+    {
+      "source": "25",
+      "project": "bootstrap.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/bootstrap.ash",
+      "name": "aal_bootstrap_readiness",
+      "signature": "agent_check aal_bootstrap_readiness()",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Check whether core bootstrap travel/setup targets are already present."
+    },
+    {
+      "source": "25",
+      "project": "bootstrap.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/bootstrap.ash",
+      "name": "aal_bootstrap_agent_context",
+      "signature": "string aal_bootstrap_agent_context()",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact initial-ascension setup context."
+    },
+    {
+      "source": "26",
+      "project": "OCD Inventory Control.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/OCD%20Inventory%",
+      "name": "aal_ocd_owned_total",
+      "signature": "int aal_ocd_owned_total(item it)",
+      "category": "Inventory",
+      "side_effects": "READ_ONLY",
+      "purpose": "Count copies across common personal item locations for disposition planning."
+    },
+    {
+      "source": "26",
+      "project": "OCD Inventory Control.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/OCD%20Inventory%",
+      "name": "aal_ocd_excess_quantity",
+      "signature": "int aal_ocd_excess_quantity(item it, int keep_amount)",
+      "category": "Inventory",
+      "side_effects": "READ_ONLY",
+      "purpose": "Compute copies above a configured keep quantity."
+    },
+    {
+      "source": "26",
+      "project": "OCD Inventory Control.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/OCD%20Inventory%",
+      "name": "aal_ocd_policy_validate",
+      "signature": "agent_check aal_ocd_policy_validate(string action, int keep_amount)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Validate a disposition action/keep quantity without performing inventory changes."
+    },
+    {
+      "source": "26",
+      "project": "OCD Inventory Control.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/OCD%20Inventory%",
+      "name": "aal_ocd_disposition_preview",
+      "signature": "agent_action_preview aal_ocd_disposition_preview(item it, string action, int keep_amount)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Preview quantity and action for an OCD-style inventory rule."
+    },
+    {
+      "source": "26",
+      "project": "OCD Inventory Control.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/OCD%20Inventory%",
+      "name": "aal_ocd_liquidation_value",
+      "signature": "int aal_ocd_liquidation_value(item it, string action, int keep_amount)",
+      "category": "Finance",
+      "side_effects": "READ_ONLY",
+      "purpose": "Estimate gross liquidation value of an OCD rule without executing it."
+    },
+    {
+      "source": "26",
+      "project": "OCD Inventory Control.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/OCD%20Inventory%",
+      "name": "aal_ocd_rule_conflict",
+      "signature": "agent_check aal_ocd_rule_conflict(string action_a, int keep_a, string action_b, int keep_b)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Detect conflicting duplicate disposition rules."
+    },
+    {
+      "source": "26",
+      "project": "OCD Inventory Control.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/OCD%20Inventory%",
+      "name": "aal_ocd_missing_rule_context",
+      "signature": "string aal_ocd_missing_rule_context(item[int] inventory_items, boolean[item] ruled_items, int max_entries)",
+      "category": "Debugging",
+      "side_effects": "READ_ONLY",
+      "purpose": "List owned items lacking a caller-provided OCD policy map."
+    },
+    {
+      "source": "26",
+      "project": "OCD Inventory Control.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/OCD%20Inventory%",
+      "name": "aal_ocd_cleanup_count",
+      "signature": "int aal_ocd_cleanup_count(item[int] items, int[item] keep_amounts)",
+      "category": "Analytics",
+      "side_effects": "READ_ONLY",
+      "purpose": "Count total copies above configured keep amounts across a caller item list."
+    },
+    {
+      "source": "26",
+      "project": "OCD Inventory Control.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/OCD%20Inventory%",
+      "name": "aal_ocd_rule_line",
+      "signature": "string aal_ocd_rule_line(item it, string action, int keep_amount)",
+      "category": "Serialization",
+      "side_effects": "READ_ONLY",
+      "purpose": "Serialize rule plus current ownership/excess as TSV."
+    },
+    {
+      "source": "26",
+      "project": "OCD Inventory Control.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/OCD%20Inventory%",
+      "name": "aal_ocd_agent_context",
+      "signature": "string aal_ocd_agent_context(item[int] items, string[item] actions, int[item] keep_amounts, int max_entries)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build bounded disposition context for policy review before execution."
+    },
+    {
+      "source": "27",
+      "project": "insertSelect2-relays",
+      "url": "https://github.com/C2Talon/insertSelect2-relays",
+      "name": "aal_select2_option",
+      "signature": "agent_option aal_select2_option(string value, string label, boolean selected, boolean enabled)",
+      "category": "Relay / UI",
+      "side_effects": "PURE",
+      "purpose": "Create a normalized searchable select option record."
+    },
+    {
+      "source": "27",
+      "project": "insertSelect2-relays",
+      "url": "https://github.com/C2Talon/insertSelect2-relays",
+      "name": "aal_select2_match_score",
+      "signature": "int aal_select2_match_score(agent_option o, string query)",
+      "category": "Query",
+      "side_effects": "PURE",
+      "purpose": "Score an option against a case-insensitive query using exact/prefix/substring matches."
+    },
+    {
+      "source": "27",
+      "project": "insertSelect2-relays",
+      "url": "https://github.com/C2Talon/insertSelect2-relays",
+      "name": "aal_select2_filter",
+      "signature": "string aal_select2_filter(agent_option[int] options, string query, int max_entries)",
+      "category": "Relay / UI",
+      "side_effects": "PURE",
+      "purpose": "Filter select options into deterministic TSV rows for search/autocomplete."
+    },
+    {
+      "source": "27",
+      "project": "insertSelect2-relays",
+      "url": "https://github.com/C2Talon/insertSelect2-relays",
+      "name": "aal_select2_selected_value",
+      "signature": "string aal_select2_selected_value(agent_option[int] options)",
+      "category": "Relay / UI",
+      "side_effects": "PURE",
+      "purpose": "Return the first selected enabled option value."
+    },
+    {
+      "source": "27",
+      "project": "insertSelect2-relays",
+      "url": "https://github.com/C2Talon/insertSelect2-relays",
+      "name": "aal_select2_duplicate_values",
+      "signature": "string aal_select2_duplicate_values(agent_option[int] options)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Report duplicate option values that make selection ambiguous."
+    },
+    {
+      "source": "27",
+      "project": "insertSelect2-relays",
+      "url": "https://github.com/C2Talon/insertSelect2-relays",
+      "name": "aal_select2_option_validate",
+      "signature": "agent_check aal_select2_option_validate(agent_option o)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Validate a searchable option has stable value/label fields."
+    },
+    {
+      "source": "27",
+      "project": "insertSelect2-relays",
+      "url": "https://github.com/C2Talon/insertSelect2-relays",
+      "name": "aal_select2_query_tokens",
+      "signature": "string aal_select2_query_tokens(string query)",
+      "category": "Normalization",
+      "side_effects": "PURE",
+      "purpose": "Normalize whitespace-separated query tokens for relay search."
+    },
+    {
+      "source": "27",
+      "project": "insertSelect2-relays",
+      "url": "https://github.com/C2Talon/insertSelect2-relays",
+      "name": "aal_select2_all_tokens_match",
+      "signature": "boolean aal_select2_all_tokens_match(agent_option o, string query)",
+      "category": "Query",
+      "side_effects": "PURE",
+      "purpose": "Require every normalized query token to appear in option value or label."
+    },
+    {
+      "source": "27",
+      "project": "insertSelect2-relays",
+      "url": "https://github.com/C2Talon/insertSelect2-relays",
+      "name": "aal_select2_option_tsv",
+      "signature": "string aal_select2_option_tsv(agent_option o)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Serialize one select option."
+    },
+    {
+      "source": "27",
+      "project": "insertSelect2-relays",
+      "url": "https://github.com/C2Talon/insertSelect2-relays",
+      "name": "aal_select2_agent_context",
+      "signature": "string aal_select2_agent_context(agent_option[int] options, string query, int max_entries)",
+      "category": "LLM Context",
+      "side_effects": "PURE",
+      "purpose": "Build compact searchable option context for an agent choosing a relay value."
+    },
+    {
+      "source": "28",
+      "project": "htmlform.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/htmlform.ash",
+      "name": "aal_htmlform_escape",
+      "signature": "string aal_htmlform_escape(string value)",
+      "category": "Relay / UI",
+      "side_effects": "PURE",
+      "purpose": "Escape basic HTML-sensitive characters for form output."
+    },
+    {
+      "source": "28",
+      "project": "htmlform.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/htmlform.ash",
+      "name": "aal_htmlform_field_validate",
+      "signature": "agent_check aal_htmlform_field_validate(string name, string value, boolean required)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Validate basic relay form field presence."
+    },
+    {
+      "source": "28",
+      "project": "htmlform.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/htmlform.ash",
+      "name": "aal_htmlform_int_validate",
+      "signature": "agent_check aal_htmlform_int_validate(string name, string value, int minimum, int maximum)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Validate an integer form value against inclusive bounds."
+    },
+    {
+      "source": "28",
+      "project": "htmlform.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/htmlform.ash",
+      "name": "aal_htmlform_bool_normalize",
+      "signature": "boolean aal_htmlform_bool_normalize(string value)",
+      "category": "Normalization",
+      "side_effects": "PURE",
+      "purpose": "Normalize common form boolean encodings."
+    },
+    {
+      "source": "28",
+      "project": "htmlform.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/htmlform.ash",
+      "name": "aal_htmlform_field_schema",
+      "signature": "string aal_htmlform_field_schema(string name, string type_name, string default_value, string description)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Serialize a form field schema for human/agent tooling."
+    },
+    {
+      "source": "28",
+      "project": "htmlform.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/htmlform.ash",
+      "name": "aal_htmlform_select_validate",
+      "signature": "agent_check aal_htmlform_select_validate(string value, string[int] allowed_values)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Check that a submitted select value belongs to the allowed set."
+    },
+    {
+      "source": "28",
+      "project": "htmlform.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/htmlform.ash",
+      "name": "aal_htmlform_changed",
+      "signature": "boolean aal_htmlform_changed(string old_value, string submitted_value)",
+      "category": "Diff / Change Detection",
+      "side_effects": "PURE",
+      "purpose": "Check whether a submitted field actually changes persisted value."
+    },
+    {
+      "source": "28",
+      "project": "htmlform.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/htmlform.ash",
+      "name": "aal_htmlform_change_line",
+      "signature": "string aal_htmlform_change_line(string name, string old_value, string submitted_value)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Serialize a proposed form change without applying it."
+    },
+    {
+      "source": "28",
+      "project": "htmlform.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/htmlform.ash",
+      "name": "aal_htmlform_error_summary",
+      "signature": "string aal_htmlform_error_summary(agent_check[int] checks)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Serialize failing field validations."
+    },
+    {
+      "source": "28",
+      "project": "htmlform.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/htmlform.ash",
+      "name": "aal_htmlform_agent_context",
+      "signature": "string aal_htmlform_agent_context(string[string] fields, int max_entries)",
+      "category": "LLM Context",
+      "side_effects": "PURE",
+      "purpose": "Serialize submitted form fields with deterministic key ordering and bounded size."
+    },
+    {
+      "source": "29",
+      "project": "BatBrain.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/BatBrain.ash",
+      "name": "aal_batbrain_combat_state",
+      "signature": "agent_combat_state aal_batbrain_combat_state()",
+      "category": "Combat",
+      "side_effects": "READ_ONLY",
+      "purpose": "Capture current combat-relevant monster/player stats without taking an action."
+    },
+    {
+      "source": "29",
+      "project": "BatBrain.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/BatBrain.ash",
+      "name": "aal_batbrain_hit_survival_margin",
+      "signature": "int aal_batbrain_hit_survival_margin(int expected_damage)",
+      "category": "Combat",
+      "side_effects": "READ_ONLY",
+      "purpose": "Compute player HP remaining after hypothetical damage."
+    },
+    {
+      "source": "29",
+      "project": "BatBrain.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/BatBrain.ash",
+      "name": "aal_batbrain_skill_mp_margin",
+      "signature": "int aal_batbrain_skill_mp_margin(skill s, int casts)",
+      "category": "Combat",
+      "side_effects": "READ_ONLY",
+      "purpose": "Compute MP remaining after hypothetical repeated skill use."
+    },
+    {
+      "source": "29",
+      "project": "BatBrain.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/BatBrain.ash",
+      "name": "aal_batbrain_action_resource_check",
+      "signature": "agent_check aal_batbrain_action_resource_check(skill s, int casts)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Validate skill ownership and MP for a hypothetical combat action."
+    },
+    {
+      "source": "29",
+      "project": "BatBrain.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/BatBrain.ash",
+      "name": "aal_batbrain_monster_meat_value",
+      "signature": "float aal_batbrain_monster_meat_value(monster m)",
+      "category": "Combat / Finance",
+      "side_effects": "READ_ONLY",
+      "purpose": "Estimate base monster meat value after current meat-drop modifier."
+    },
+    {
+      "source": "29",
+      "project": "BatBrain.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/BatBrain.ash",
+      "name": "aal_batbrain_runaway_value",
+      "signature": "float aal_batbrain_runaway_value(monster m, int value_of_adventure)",
+      "category": "Combat / Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Estimate opportunity cost of running away as monster base meat plus one adventure value."
+    },
+    {
+      "source": "29",
+      "project": "BatBrain.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/BatBrain.ash",
+      "name": "aal_batbrain_beaten_up_turn_cost",
+      "signature": "int aal_batbrain_beaten_up_turn_cost(int value_of_adventure)",
+      "category": "Combat / Planning",
+      "side_effects": "PURE",
+      "purpose": "Value the canonical three-adventure Beaten Up opportunity cost floor."
+    },
+    {
+      "source": "29",
+      "project": "BatBrain.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/BatBrain.ash",
+      "name": "aal_batbrain_element_context",
+      "signature": "string aal_batbrain_element_context(monster m)",
+      "category": "Combat",
+      "side_effects": "READ_ONLY",
+      "purpose": "Serialize monster element and player elemental resistances for combat planning."
+    },
+    {
+      "source": "29",
+      "project": "BatBrain.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/BatBrain.ash",
+      "name": "aal_batbrain_action_preview",
+      "signature": "agent_action_preview aal_batbrain_action_preview(string action_label, int expected_damage, int mp_cost_value, int value_cost)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Create a non-mutating combat action preview with HP/MP/value checks."
+    },
+    {
+      "source": "29",
+      "project": "BatBrain.ash",
+      "url": "https://github.com/IronTetsubo/KoLmafia-ash/blob/master/scripts/BatBrain.ash",
+      "name": "aal_batbrain_agent_context",
+      "signature": "string aal_batbrain_agent_context(int value_of_adventure)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact BatBrain-inspired combat context for an LLM without producing/executing a macro."
+    },
+    {
+      "source": "30",
+      "project": "liba",
+      "url": "https://github.com/C2Talon/liba",
+      "name": "aal_liba_clamp_normalized",
+      "signature": "float aal_liba_clamp_normalized(float value, float low, float high)",
+      "category": "Math",
+      "side_effects": "PURE",
+      "purpose": "Clamp while safely normalizing reversed bounds."
+    },
+    {
+      "source": "30",
+      "project": "liba",
+      "url": "https://github.com/C2Talon/liba",
+      "name": "aal_liba_tokens_all_present",
+      "signature": "boolean aal_liba_tokens_all_present(string haystack, string[int] tokens)",
+      "category": "Query",
+      "side_effects": "PURE",
+      "purpose": "Check that every non-empty token occurs case-insensitively in text."
+    },
+    {
+      "source": "30",
+      "project": "liba",
+      "url": "https://github.com/C2Talon/liba",
+      "name": "aal_liba_property_increment_preview",
+      "signature": "agent_delta aal_liba_property_increment_preview(string property_name, int delta)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Preview integer preference increment without writing it."
+    },
+    {
+      "source": "30",
+      "project": "liba",
+      "url": "https://github.com/C2Talon/liba",
+      "name": "aal_liba_priority_item_reason",
+      "signature": "string aal_liba_priority_item_reason(item[int] candidates)",
+      "category": "Capability Discovery",
+      "side_effects": "READ_ONLY",
+      "purpose": "Select the first available item and explain the priority position."
+    },
+    {
+      "source": "30",
+      "project": "liba",
+      "url": "https://github.com/C2Talon/liba",
+      "name": "aal_liba_choice_context",
+      "signature": "string aal_liba_choice_context()",
+      "category": "Choices",
+      "side_effects": "READ_ONLY",
+      "purpose": "Return compact current-choice context inspired by liba_inChoice."
+    },
+    {
+      "source": "30",
+      "project": "liba",
+      "url": "https://github.com/C2Talon/liba",
+      "name": "aal_liba_combat_context",
+      "signature": "string aal_liba_combat_context()",
+      "category": "Combat",
+      "side_effects": "READ_ONLY",
+      "purpose": "Return compact combat indicators inspired by liba_inCombat without executing requests."
+    },
+    {
+      "source": "30",
+      "project": "liba",
+      "url": "https://github.com/C2Talon/liba",
+      "name": "aal_liba_equip_cast_preflight",
+      "signature": "agent_check aal_liba_equip_cast_preflight(item gear, skill s, int casts)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Check equip/cast prerequisites and MP without changing equipment."
+    },
+    {
+      "source": "30",
+      "project": "liba",
+      "url": "https://github.com/C2Talon/liba",
+      "name": "aal_liba_raw_use_preflight",
+      "signature": "agent_check aal_liba_raw_use_preflight(item it)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Describe whether an item is present for low-level/raw-use logic, without using it."
+    },
+    {
+      "source": "30",
+      "project": "liba",
+      "url": "https://github.com/C2Talon/liba",
+      "name": "aal_liba_resource_module_context",
+      "signature": "string aal_liba_resource_module_context(item key_item, string[int] preference_names)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build generic context for one of liba's resource-specific IOTM modules."
+    },
+    {
+      "source": "30",
+      "project": "liba",
+      "url": "https://github.com/C2Talon/liba",
+      "name": "aal_liba_micro_context",
+      "signature": "string aal_liba_micro_context(string label, string[int] preference_names, item[int] items)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Compose tiny reusable preference/item context in the spirit of liba's focused modules."
+    },
+    {
+      "source": "31",
+      "project": "FunctionLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/FunctionLib.ash",
+      "name": "aal_functionlib_ownership_locations",
+      "signature": "string aal_functionlib_ownership_locations(item it)",
+      "category": "Inventory",
+      "side_effects": "READ_ONLY",
+      "purpose": "Expose where an item is currently held instead of collapsing ownership to a boolean."
+    },
+    {
+      "source": "31",
+      "project": "FunctionLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/FunctionLib.ash",
+      "name": "aal_functionlib_acquisition_gap",
+      "signature": "string aal_functionlib_acquisition_gap(item it, int desired)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Compute inventory shortfall and nearby source counts without acquiring anything."
+    },
+    {
+      "source": "31",
+      "project": "FunctionLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/FunctionLib.ash",
+      "name": "aal_functionlib_consumption_kind",
+      "signature": "string aal_functionlib_consumption_kind(item it)",
+      "category": "Items",
+      "side_effects": "READ_ONLY",
+      "purpose": "Describe likely consumption channel from native item metadata."
+    },
+    {
+      "source": "31",
+      "project": "FunctionLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/FunctionLib.ash",
+      "name": "aal_functionlib_familiar_training_gap",
+      "signature": "agent_range_state aal_functionlib_familiar_training_gap(familiar fam, int target_weight)",
+      "category": "Familiar",
+      "side_effects": "READ_ONLY",
+      "purpose": "Measure familiar base-weight gap before any training action."
+    },
+    {
+      "source": "31",
+      "project": "FunctionLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/FunctionLib.ash",
+      "name": "aal_functionlib_equipment_preflight",
+      "signature": "agent_check aal_functionlib_equipment_preflight(item it)",
+      "category": "Equipment",
+      "side_effects": "READ_ONLY",
+      "purpose": "Check possession/equipability and current equip state without equipping."
+    },
+    {
+      "source": "31",
+      "project": "FunctionLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/FunctionLib.ash",
+      "name": "aal_functionlib_stash_transfer_preview",
+      "signature": "agent_action_preview aal_functionlib_stash_transfer_preview(string direction, item it, int quantity)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Preview a stash take/put operation and available quantity without moving items."
+    },
+    {
+      "source": "31",
+      "project": "FunctionLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/FunctionLib.ash",
+      "name": "aal_functionlib_recovery_gap",
+      "signature": "string aal_functionlib_recovery_gap(int target_hp)",
+      "category": "Recovery",
+      "side_effects": "READ_ONLY",
+      "purpose": "Measure HP recovery gap and Beaten Up state without recovering."
+    },
+    {
+      "source": "31",
+      "project": "FunctionLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/FunctionLib.ash",
+      "name": "aal_functionlib_skill_preflight",
+      "signature": "agent_check aal_functionlib_skill_preflight(skill s, int casts)",
+      "category": "Skills",
+      "side_effects": "READ_ONLY",
+      "purpose": "Check ownership and MP for repeated skill use without casting."
+    },
+    {
+      "source": "31",
+      "project": "FunctionLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/FunctionLib.ash",
+      "name": "aal_functionlib_wand_inventory",
+      "signature": "string aal_functionlib_wand_inventory()",
+      "category": "Items",
+      "side_effects": "READ_ONLY",
+      "purpose": "Serialize all five zap-wand IDs currently owned/available."
+    },
+    {
+      "source": "31",
+      "project": "FunctionLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/FunctionLib.ash",
+      "name": "aal_functionlib_agent_context",
+      "signature": "string aal_functionlib_agent_context(item it, familiar fam, skill s)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact utility context combining ownership, familiar, and skill readiness."
+    },
+    {
+      "source": "32",
+      "project": "c2t_lib",
+      "url": "https://github.com/C2Talon/c2t_lib",
+      "name": "aal_c2lib_sausage_odds",
+      "signature": "float aal_c2lib_sausage_odds()",
+      "category": "Wanderers",
+      "side_effects": "READ_ONLY",
+      "purpose": "Recompute c2t_lib-inspired sausage goblin odds without equipping or adventuring."
+    },
+    {
+      "source": "32",
+      "project": "c2t_lib",
+      "url": "https://github.com/C2Talon/c2t_lib",
+      "name": "aal_c2lib_sausage_ready",
+      "signature": "boolean aal_c2lib_sausage_ready()",
+      "category": "Wanderers",
+      "side_effects": "READ_ONLY",
+      "purpose": "Check whether the sausage wanderer threshold is currently met."
+    },
+    {
+      "source": "32",
+      "project": "c2t_lib",
+      "url": "https://github.com/C2Talon/c2t_lib",
+      "name": "aal_c2lib_void_state",
+      "signature": "string aal_c2lib_void_state()",
+      "category": "Wanderers",
+      "side_effects": "READ_ONLY",
+      "purpose": "Expose cursed magnifying glass charge/free-fight state."
+    },
+    {
+      "source": "32",
+      "project": "c2t_lib",
+      "url": "https://github.com/C2Talon/c2t_lib",
+      "name": "aal_c2lib_choice_expectation",
+      "signature": "agent_check aal_c2lib_choice_expectation(int expected_choice)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Validate exact active choice ID."
+    },
+    {
+      "source": "32",
+      "project": "c2t_lib",
+      "url": "https://github.com/C2Talon/c2t_lib",
+      "name": "aal_c2lib_pilcrow_items",
+      "signature": "string aal_c2lib_pilcrow_items(string maximizer_expression)",
+      "category": "Normalization",
+      "side_effects": "PURE",
+      "purpose": "Decode pilcrow item tokens from a maximizer expression into typed item rows for troubleshooting."
+    },
+    {
+      "source": "32",
+      "project": "c2t_lib",
+      "url": "https://github.com/C2Talon/c2t_lib",
+      "name": "aal_c2lib_priority_item_context",
+      "signature": "string aal_c2lib_priority_item_context(item[int] candidates)",
+      "category": "Capability Discovery",
+      "side_effects": "READ_ONLY",
+      "purpose": "Return first available item plus all candidate availability for explainable priority."
+    },
+    {
+      "source": "32",
+      "project": "c2t_lib",
+      "url": "https://github.com/C2Talon/c2t_lib",
+      "name": "aal_c2lib_maximize_key",
+      "signature": "string aal_c2lib_maximize_key(string maximizer_expression)",
+      "category": "Normalization",
+      "side_effects": "PURE",
+      "purpose": "Normalize a maximizer expression into a lightweight cache-comparison key."
+    },
+    {
+      "source": "32",
+      "project": "c2t_lib",
+      "url": "https://github.com/C2Talon/c2t_lib",
+      "name": "aal_c2lib_free_adventure_preflight",
+      "signature": "agent_check aal_c2lib_free_adventure_preflight(location loc)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Snapshot turn count and accessibility before a caller attempts a supposedly free adventure."
+    },
+    {
+      "source": "32",
+      "project": "c2t_lib",
+      "url": "https://github.com/C2Talon/c2t_lib",
+      "name": "aal_c2lib_purchase_budget",
+      "signature": "agent_action_preview aal_c2lib_purchase_budget(item it, int quantity, int max_unit_price)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Estimate mall cost/budget fit without invoking c2t_buy."
+    },
+    {
+      "source": "32",
+      "project": "c2t_lib",
+      "url": "https://github.com/C2Talon/c2t_lib",
+      "name": "aal_c2lib_macro_description",
+      "signature": "string aal_c2lib_macro_description(string macro_text)",
+      "category": "Combat / Describe",
+      "side_effects": "PURE",
+      "purpose": "Describe BALLS-style combat macro structure without submitting it."
+    },
+    {
+      "source": "33",
+      "project": "SmashLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/SmashLib.ash",
+      "name": "aal_smash_slot_candidate",
+      "signature": "boolean aal_smash_slot_candidate(item it)",
+      "category": "Crafting",
+      "side_effects": "READ_ONLY",
+      "purpose": "Check whether an item occupies an equipment slot commonly eligible for pulverization."
+    },
+    {
+      "source": "33",
+      "project": "SmashLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/SmashLib.ash",
+      "name": "aal_smash_power_band",
+      "signature": "string aal_smash_power_band(item it)",
+      "category": "Crafting",
+      "side_effects": "READ_ONLY",
+      "purpose": "Map equipment power to legacy pulverization power bands."
+    },
+    {
+      "source": "33",
+      "project": "SmashLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/SmashLib.ash",
+      "name": "aal_smash_element_profile",
+      "signature": "string aal_smash_element_profile(item it)",
+      "category": "Crafting",
+      "side_effects": "READ_ONLY",
+      "purpose": "Summarize elemental damage/resistance signals relevant to pulverization output."
+    },
+    {
+      "source": "33",
+      "project": "SmashLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/SmashLib.ash",
+      "name": "aal_smash_value_floor",
+      "signature": "int aal_smash_value_floor(item it)",
+      "category": "Crafting / Finance",
+      "side_effects": "READ_ONLY",
+      "purpose": "Compute the immediate economic floor an item should beat before smashing."
+    },
+    {
+      "source": "33",
+      "project": "SmashLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/SmashLib.ash",
+      "name": "aal_smash_candidate_check",
+      "signature": "agent_check aal_smash_candidate_check(item it)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Validate an item as an ordinary equipment pulverization candidate without smashing it."
+    },
+    {
+      "source": "33",
+      "project": "SmashLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/SmashLib.ash",
+      "name": "aal_smash_expected_material_tier",
+      "signature": "string aal_smash_expected_material_tier(item it)",
+      "category": "Crafting",
+      "side_effects": "READ_ONLY",
+      "purpose": "Normalize power band to powder/nugget/wad family."
+    },
+    {
+      "source": "33",
+      "project": "SmashLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/SmashLib.ash",
+      "name": "aal_smash_loss_risk",
+      "signature": "agent_check aal_smash_loss_risk(item it, int estimated_yield_value)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Compare estimated smash-yield value with keeping/selling value."
+    },
+    {
+      "source": "33",
+      "project": "SmashLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/SmashLib.ash",
+      "name": "aal_smash_inventory_candidates",
+      "signature": "string aal_smash_inventory_candidates(int min_power, int max_entries)",
+      "category": "Crafting",
+      "side_effects": "READ_ONLY",
+      "purpose": "List owned ordinary equipment at/above a power threshold for later smash analysis."
+    },
+    {
+      "source": "33",
+      "project": "SmashLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/SmashLib.ash",
+      "name": "aal_smash_plan_line",
+      "signature": "string aal_smash_plan_line(item it, int estimated_yield_value)",
+      "category": "Serialization",
+      "side_effects": "READ_ONLY",
+      "purpose": "Serialize one smash candidate with economic risk context."
+    },
+    {
+      "source": "33",
+      "project": "SmashLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/SmashLib.ash",
+      "name": "aal_smash_agent_context",
+      "signature": "string aal_smash_agent_context(item it)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact pulverization context without loading old data maps or smashing."
+    },
+    {
+      "source": "34",
+      "project": "helper.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/helper.ash",
+      "name": "aal_helper_epic_weapon_state",
+      "signature": "string aal_helper_epic_weapon_state()",
+      "category": "Equipment",
+      "side_effects": "READ_ONLY",
+      "purpose": "Summarize class-relevant Epic/Legendary/Ultimate weapon ownership without changing equipment."
+    },
+    {
+      "source": "34",
+      "project": "helper.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/helper.ash",
+      "name": "aal_helper_wand_state",
+      "signature": "string aal_helper_wand_state()",
+      "category": "Items",
+      "side_effects": "READ_ONLY",
+      "purpose": "Return compact zap-wand ownership state."
+    },
+    {
+      "source": "34",
+      "project": "helper.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/helper.ash",
+      "name": "aal_helper_pull_need_score",
+      "signature": "int aal_helper_pull_need_score(item it, int target_quantity, int strategic_weight)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Score a potential pull by ownership gap times caller strategic weight."
+    },
+    {
+      "source": "34",
+      "project": "helper.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/helper.ash",
+      "name": "aal_helper_yellow_ray_readiness",
+      "signature": "agent_check aal_helper_yellow_ray_readiness()",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Check broad yellow-ray readiness signals used by legacy advisories."
+    },
+    {
+      "source": "34",
+      "project": "helper.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/helper.ash",
+      "name": "aal_helper_fax_readiness",
+      "signature": "agent_check aal_helper_fax_readiness()",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Expose photocopy-use/path conditions relevant to legacy fax advisories."
+    },
+    {
+      "source": "34",
+      "project": "helper.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/helper.ash",
+      "name": "aal_helper_pirate_access_context",
+      "signature": "string aal_helper_pirate_access_context()",
+      "category": "Adventure",
+      "side_effects": "READ_ONLY",
+      "purpose": "Summarize pirate access items/outfit rather than temporarily equipping them."
+    },
+    {
+      "source": "34",
+      "project": "helper.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/helper.ash",
+      "name": "aal_helper_familiar_goal_score",
+      "signature": "float aal_helper_familiar_goal_score(familiar fam, string goal)",
+      "category": "Familiar",
+      "side_effects": "READ_ONLY",
+      "purpose": "Create an explainable familiar-goal score using weight and broad native modifiers."
+    },
+    {
+      "source": "34",
+      "project": "helper.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/helper.ash",
+      "name": "aal_helper_consumable_pull_context",
+      "signature": "string aal_helper_consumable_pull_context(item[int] candidates, int max_entries)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "List missing candidate consumables with storage counts/mall prices for pull decisions."
+    },
+    {
+      "source": "34",
+      "project": "helper.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/helper.ash",
+      "name": "aal_helper_access_check",
+      "signature": "agent_check aal_helper_access_check(location loc, item required_item)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Combine location accessibility with a required-item condition."
+    },
+    {
+      "source": "34",
+      "project": "helper.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/helper.ash",
+      "name": "aal_helper_agent_context",
+      "signature": "string aal_helper_agent_context(string goal)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact ascension-helper context around pulls, fax/yellow-ray and basic resources."
+    },
+    {
+      "source": "35",
+      "project": "QuestLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/QuestLib.ash",
+      "name": "aal_quest_property_state",
+      "signature": "string aal_quest_property_state(string quest_property)",
+      "category": "Quests",
+      "side_effects": "READ_ONLY",
+      "purpose": "Return normalized KoLmafia quest preference text."
+    },
+    {
+      "source": "35",
+      "project": "QuestLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/QuestLib.ash",
+      "name": "aal_quest_progress_rank",
+      "signature": "int aal_quest_progress_rank(string quest_state)",
+      "category": "Quests",
+      "side_effects": "PURE",
+      "purpose": "Convert common quest states into a coarse monotonic progress rank."
+    },
+    {
+      "source": "35",
+      "project": "QuestLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/QuestLib.ash",
+      "name": "aal_quest_combat_rate_goal",
+      "signature": "string aal_quest_combat_rate_goal(string mode)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Translate legacy request_combat/request_noncombat intent into a descriptive maximizer goal."
+    },
+    {
+      "source": "35",
+      "project": "QuestLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/QuestLib.ash",
+      "name": "aal_quest_mcd_ceiling",
+      "signature": "int aal_quest_mcd_ceiling()",
+      "category": "Adventure",
+      "side_effects": "READ_ONLY",
+      "purpose": "Return the legacy practical MCD ceiling implied by sign."
+    },
+    {
+      "source": "35",
+      "project": "QuestLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/QuestLib.ash",
+      "name": "aal_quest_mcd_preflight",
+      "signature": "agent_check aal_quest_mcd_preflight(int desired)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Validate desired MCD against source-inspired practical ceiling."
+    },
+    {
+      "source": "35",
+      "project": "QuestLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/QuestLib.ash",
+      "name": "aal_quest_underwater_preflight",
+      "signature": "agent_check aal_quest_underwater_preflight()",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Check ownership of common underwater breathing gear without changing outfit."
+    },
+    {
+      "source": "35",
+      "project": "QuestLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/QuestLib.ash",
+      "name": "aal_quest_location_state",
+      "signature": "string aal_quest_location_state(location loc)",
+      "category": "Adventure",
+      "side_effects": "READ_ONLY",
+      "purpose": "Describe quest location accessibility/turn history."
+    },
+    {
+      "source": "35",
+      "project": "QuestLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/QuestLib.ash",
+      "name": "aal_quest_resource_gap",
+      "signature": "agent_delta aal_quest_resource_gap(item it, int required)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Measure quest-item shortfall across available amount."
+    },
+    {
+      "source": "35",
+      "project": "QuestLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/QuestLib.ash",
+      "name": "aal_quest_plan_line",
+      "signature": "string aal_quest_plan_line(string quest_property, location loc, item required_item)",
+      "category": "Serialization",
+      "side_effects": "READ_ONLY",
+      "purpose": "Serialize one quest planning row from preference, location and item state."
+    },
+    {
+      "source": "35",
+      "project": "QuestLib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/QuestLib.ash",
+      "name": "aal_quest_agent_context",
+      "signature": "string aal_quest_agent_context(string[int] quest_properties, int max_entries)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build bounded quest-state context without invoking old mood/gear automation."
+    },
+    {
+      "source": "36",
+      "project": "sims_lib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/sims_lib.ash",
+      "name": "aal_sims_familiar_weight",
+      "signature": "int aal_sims_familiar_weight(familiar fam)",
+      "category": "Familiar",
+      "side_effects": "READ_ONLY",
+      "purpose": "Return current effective familiar weight basis for recommendation logic."
+    },
+    {
+      "source": "36",
+      "project": "sims_lib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/sims_lib.ash",
+      "name": "aal_sims_runaway_capacity",
+      "signature": "int aal_sims_runaway_capacity(familiar fam)",
+      "category": "Familiar",
+      "side_effects": "READ_ONLY",
+      "purpose": "Estimate weight-based free-runaway capacity using the legacy 5-weight-per-runaway heuristic."
+    },
+    {
+      "source": "36",
+      "project": "sims_lib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/sims_lib.ash",
+      "name": "aal_sims_delay_state",
+      "signature": "agent_resource_state aal_sims_delay_state()",
+      "category": "Adventure",
+      "side_effects": "READ_ONLY",
+      "purpose": "Expose Mini-Hipster free-adventure usage relevant to delay-zone recommendations."
+    },
+    {
+      "source": "36",
+      "project": "sims_lib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/sims_lib.ash",
+      "name": "aal_sims_goal_score",
+      "signature": "float aal_sims_goal_score(familiar fam, string goal, int combat_bias)",
+      "category": "Familiar",
+      "side_effects": "READ_ONLY",
+      "purpose": "Score owned familiars by weight plus broad goal/combat heuristics."
+    },
+    {
+      "source": "36",
+      "project": "sims_lib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/sims_lib.ash",
+      "name": "aal_sims_best_familiar",
+      "signature": "familiar aal_sims_best_familiar(familiar[int] candidates, string goal, int combat_bias)",
+      "category": "Familiar",
+      "side_effects": "READ_ONLY",
+      "purpose": "Select highest-scoring candidate familiar without switching it."
+    },
+    {
+      "source": "36",
+      "project": "sims_lib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/sims_lib.ash",
+      "name": "aal_sims_familiar_line",
+      "signature": "string aal_sims_familiar_line(familiar fam, string goal, int combat_bias)",
+      "category": "Serialization",
+      "side_effects": "READ_ONLY",
+      "purpose": "Serialize familiar recommendation evidence."
+    },
+    {
+      "source": "36",
+      "project": "sims_lib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/sims_lib.ash",
+      "name": "aal_sims_goal_candidates",
+      "signature": "string aal_sims_goal_candidates(familiar[int] candidates, string goal, int combat_bias, int max_entries)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Emit bounded familiar candidate evidence in caller order."
+    },
+    {
+      "source": "36",
+      "project": "sims_lib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/sims_lib.ash",
+      "name": "aal_sims_path_constraint",
+      "signature": "agent_check aal_sims_path_constraint(familiar fam)",
+      "category": "Validation",
+      "side_effects": "READ_ONLY",
+      "purpose": "Check whether a familiar is usable in the current path by ownership plus path-level familiar availability."
+    },
+    {
+      "source": "36",
+      "project": "sims_lib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/sims_lib.ash",
+      "name": "aal_sims_recommendation_reason",
+      "signature": "string aal_sims_recommendation_reason(familiar fam, string goal)",
+      "category": "Describe",
+      "side_effects": "READ_ONLY",
+      "purpose": "Generate concise human/agent-readable rationale for common familiar goals."
+    },
+    {
+      "source": "36",
+      "project": "sims_lib.ash",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/master/scripts/sims_lib.ash",
+      "name": "aal_sims_agent_context",
+      "signature": "string aal_sims_agent_context(familiar[int] candidates, string goal, int combat_bias)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact familiar recommendation context without switching familiars."
+    },
+    {
+      "source": "37",
+      "project": "pUpdates repository (second supplied entry)",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdateslog_parse_header",
+      "signature": "int aal_pupdateslog_parse_header(string[int] update_lines)",
+      "category": "Updates",
+      "side_effects": "PURE",
+      "purpose": "Extract current version from a pUpdates-style map representation where index -1 stores version."
+    },
+    {
+      "source": "37",
+      "project": "pUpdates repository (second supplied entry)",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdateslog_entry",
+      "signature": "string aal_pupdateslog_entry(string[int] update_lines, int version)",
+      "category": "Updates",
+      "side_effects": "PURE",
+      "purpose": "Return one changelog entry by version."
+    },
+    {
+      "source": "37",
+      "project": "pUpdates repository (second supplied entry)",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdateslog_since",
+      "signature": "string aal_pupdateslog_since(string[int] update_lines, int seen_version, int max_entries)",
+      "category": "Updates",
+      "side_effects": "PURE",
+      "purpose": "Serialize changelog entries newer than a seen version."
+    },
+    {
+      "source": "37",
+      "project": "pUpdates repository (second supplied entry)",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdateslog_missing_versions",
+      "signature": "string aal_pupdateslog_missing_versions(string[int] update_lines)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Report gaps between version 0 and declared current version."
+    },
+    {
+      "source": "37",
+      "project": "pUpdates repository (second supplied entry)",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdateslog_contiguous",
+      "signature": "boolean aal_pupdateslog_contiguous(string[int] update_lines)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Check whether all changelog versions through current are present."
+    },
+    {
+      "source": "37",
+      "project": "pUpdates repository (second supplied entry)",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdateslog_checksum",
+      "signature": "int aal_pupdateslog_checksum(string[int] update_lines)",
+      "category": "Debugging",
+      "side_effects": "PURE",
+      "purpose": "Produce a deterministic lightweight checksum from version numbers and line lengths."
+    },
+    {
+      "source": "37",
+      "project": "pUpdates repository (second supplied entry)",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdateslog_search",
+      "signature": "string aal_pupdateslog_search(string[int] update_lines, string query, int max_entries)",
+      "category": "Query",
+      "side_effects": "PURE",
+      "purpose": "Search changelog entries case-insensitively."
+    },
+    {
+      "source": "37",
+      "project": "pUpdates repository (second supplied entry)",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdateslog_tsv",
+      "signature": "string aal_pupdateslog_tsv(string script_name, string[int] update_lines)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Serialize an entire changelog as versioned TSV."
+    },
+    {
+      "source": "37",
+      "project": "pUpdates repository (second supplied entry)",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdateslog_validate",
+      "signature": "agent_check aal_pupdateslog_validate(string[int] update_lines)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Validate header/version continuity for a changelog map."
+    },
+    {
+      "source": "37",
+      "project": "pUpdates repository (second supplied entry)",
+      "url": "https://github.com/Prusias-kol/pUpdates",
+      "name": "aal_pupdateslog_agent_context",
+      "signature": "string aal_pupdateslog_agent_context(string script_name, string[int] update_lines, int seen_version, int max_entries)",
+      "category": "LLM Context",
+      "side_effects": "PURE",
+      "purpose": "Build compact unseen-changelog context without reading/writing preferences."
+    },
+    {
+      "source": "38",
+      "project": "DicsLibrary.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/DicsLibrary.ash",
+      "name": "aal_dics_pref_int",
+      "signature": "int aal_dics_pref_int(string property_name, int default_value)",
+      "category": "Properties",
+      "side_effects": "READ_ONLY",
+      "purpose": "Read an integer preference with explicit default for missing/empty values."
+    },
+    {
+      "source": "38",
+      "project": "DicsLibrary.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/DicsLibrary.ash",
+      "name": "aal_dics_pref_snapshot",
+      "signature": "string aal_dics_pref_snapshot(string[int] property_names, int max_entries)",
+      "category": "Serialization",
+      "side_effects": "READ_ONLY",
+      "purpose": "Serialize a bounded caller-selected preference set as deterministic key=value context."
+    },
+    {
+      "source": "38",
+      "project": "DicsLibrary.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/DicsLibrary.ash",
+      "name": "aal_dics_total_amount",
+      "signature": "int aal_dics_total_amount(item it, boolean include_stash)",
+      "category": "Inventory",
+      "side_effects": "READ_ONLY",
+      "purpose": "Count item ownership across inventory/equipment/closet/storage/display/shop and optionally stash."
+    },
+    {
+      "source": "38",
+      "project": "DicsLibrary.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/DicsLibrary.ash",
+      "name": "aal_dics_market_confidence",
+      "signature": "string aal_dics_market_confidence(item it, int fresh_days)",
+      "category": "Finance",
+      "side_effects": "READ_ONLY",
+      "purpose": "Classify price confidence from tradeability, historical age, historical price, and mall fallback."
+    },
+    {
+      "source": "38",
+      "project": "DicsLibrary.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/DicsLibrary.ash",
+      "name": "aal_dics_value_estimate",
+      "signature": "int aal_dics_value_estimate(item it, int fresh_days, float multiplier)",
+      "category": "Finance",
+      "side_effects": "READ_ONLY",
+      "purpose": "Estimate item value with a configurable sell-realization multiplier."
+    },
+    {
+      "source": "38",
+      "project": "DicsLibrary.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/DicsLibrary.ash",
+      "name": "aal_dics_stock_reorder",
+      "signature": "int aal_dics_stock_reorder(item it, int target_amount)",
+      "category": "Planning",
+      "side_effects": "READ_ONLY",
+      "purpose": "Calculate reorder quantity to reach a target personal stock."
+    },
+    {
+      "source": "38",
+      "project": "DicsLibrary.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/DicsLibrary.ash",
+      "name": "aal_dics_recovery_state",
+      "signature": "string aal_dics_recovery_state()",
+      "category": "Recovery",
+      "side_effects": "READ_ONLY",
+      "purpose": "Expose HP/MP recovery targets and current state."
+    },
+    {
+      "source": "38",
+      "project": "DicsLibrary.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/DicsLibrary.ash",
+      "name": "aal_dics_song_state",
+      "signature": "string aal_dics_song_state()",
+      "category": "Effects",
+      "side_effects": "READ_ONLY",
+      "purpose": "Summarize active Accordion Thief song effects and durations."
+    },
+    {
+      "source": "38",
+      "project": "DicsLibrary.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/DicsLibrary.ash",
+      "name": "aal_dics_item_context",
+      "signature": "string aal_dics_item_context(item it, int fresh_days, float multiplier)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build compact ownership/valuation context for one item."
+    },
+    {
+      "source": "38",
+      "project": "DicsLibrary.ash",
+      "url": "https://github.com/Prusias-kol/pTrack/blob/main/kolmafia/scripts/ptrackSuite/DicsLibrary.ash",
+      "name": "aal_dics_agent_context",
+      "signature": "string aal_dics_agent_context(item[int] items, int max_entries, int fresh_days, float multiplier)",
+      "category": "LLM Context",
+      "side_effects": "READ_ONLY",
+      "purpose": "Build bounded item/value context inspired by DicsLibrary's broad utility role."
+    },
+    {
+      "source": "39",
+      "project": "Choice-Override",
+      "url": "https://github.com/Ezandora/Choice-Override",
+      "name": "aal_choiceoverride_choice_id",
+      "signature": "int aal_choiceoverride_choice_id(string page_text)",
+      "category": "Choices",
+      "side_effects": "PURE",
+      "purpose": "Parse a choice ID from common whichchoice HTML/query patterns without issuing a request."
+    },
+    {
+      "source": "39",
+      "project": "Choice-Override",
+      "url": "https://github.com/Ezandora/Choice-Override",
+      "name": "aal_choiceoverride_option_ids",
+      "signature": "string aal_choiceoverride_option_ids(string page_text)",
+      "category": "Choices",
+      "side_effects": "PURE",
+      "purpose": "Extract unique positive option values from choice-page HTML."
+    },
+    {
+      "source": "39",
+      "project": "Choice-Override",
+      "url": "https://github.com/Ezandora/Choice-Override",
+      "name": "aal_choiceoverride_script_base",
+      "signature": "string aal_choiceoverride_script_base(int choice_id)",
+      "category": "Normalization",
+      "side_effects": "PURE",
+      "purpose": "Generate the canonical override script basename for a choice."
+    },
+    {
+      "source": "39",
+      "project": "Choice-Override",
+      "url": "https://github.com/Ezandora/Choice-Override",
+      "name": "aal_choiceoverride_handler_candidates",
+      "signature": "string aal_choiceoverride_handler_candidates(int choice_id)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Return exact ASH/JS handler candidates plus fallback names in lookup order."
+    },
+    {
+      "source": "39",
+      "project": "Choice-Override",
+      "url": "https://github.com/Ezandora/Choice-Override",
+      "name": "aal_choiceoverride_page_fingerprint",
+      "signature": "string aal_choiceoverride_page_fingerprint(string page_text)",
+      "category": "Debugging",
+      "side_effects": "PURE",
+      "purpose": "Build a lightweight deterministic choice-page fingerprint from parsed ID/length/option list."
+    },
+    {
+      "source": "39",
+      "project": "Choice-Override",
+      "url": "https://github.com/Ezandora/Choice-Override",
+      "name": "aal_choiceoverride_validate_page",
+      "signature": "agent_check aal_choiceoverride_validate_page(string page_text)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Validate that a page contains an identifiable choice and at least one option."
+    },
+    {
+      "source": "39",
+      "project": "Choice-Override",
+      "url": "https://github.com/Ezandora/Choice-Override",
+      "name": "aal_choiceoverride_route_preview",
+      "signature": "string aal_choiceoverride_route_preview(string page_text, boolean specific_handler_exists, boolean fallback_handler_exists)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Describe Choice-Override routing decision without dispatching a script."
+    },
+    {
+      "source": "39",
+      "project": "Choice-Override",
+      "url": "https://github.com/Ezandora/Choice-Override",
+      "name": "aal_choiceoverride_encode_payload",
+      "signature": "string aal_choiceoverride_encode_payload(string page_text)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "URL-encode choice page text for safe argument transport, mirroring the source's transport idea."
+    },
+    {
+      "source": "39",
+      "project": "Choice-Override",
+      "url": "https://github.com/Ezandora/Choice-Override",
+      "name": "aal_choiceoverride_decode_payload",
+      "signature": "string aal_choiceoverride_decode_payload(string encoded)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Decode a Choice-Override-style page payload."
+    },
+    {
+      "source": "39",
+      "project": "Choice-Override",
+      "url": "https://github.com/Ezandora/Choice-Override",
+      "name": "aal_choiceoverride_agent_context",
+      "signature": "string aal_choiceoverride_agent_context(string page_text)",
+      "category": "LLM Context",
+      "side_effects": "PURE",
+      "purpose": "Build compact choice context from page text without visiting or submitting choice.php."
+    },
+    {
+      "source": "40",
+      "project": "zlib.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/scripts/zlib.ash#L4",
+      "name": "aal_zlib_normalize_bool",
+      "signature": "string aal_zlib_normalize_bool(string value)",
+      "category": "Normalization",
+      "side_effects": "PURE",
+      "purpose": "Normalize boolean-like setting text to canonical true/false."
+    },
+    {
+      "source": "40",
+      "project": "zlib.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/scripts/zlib.ash#L4",
+      "name": "aal_zlib_normalize_int",
+      "signature": "string aal_zlib_normalize_int(string value)",
+      "category": "Normalization",
+      "side_effects": "PURE",
+      "purpose": "Normalize integer setting text."
+    },
+    {
+      "source": "40",
+      "project": "zlib.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/scripts/zlib.ash#L4",
+      "name": "aal_zlib_normalize_item",
+      "signature": "string aal_zlib_normalize_item(string value)",
+      "category": "Normalization",
+      "side_effects": "PURE",
+      "purpose": "Normalize item setting text through KoLmafia's typed item parser."
+    },
+    {
+      "source": "40",
+      "project": "zlib.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/scripts/zlib.ash#L4",
+      "name": "aal_zlib_list_unique",
+      "signature": "string aal_zlib_list_unique(string list_text, string glue)",
+      "category": "Normalization",
+      "side_effects": "PURE",
+      "purpose": "De-duplicate a delimited list using deterministic lexical output."
+    },
+    {
+      "source": "40",
+      "project": "zlib.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/scripts/zlib.ash#L4",
+      "name": "aal_zlib_list_contains_exact",
+      "signature": "boolean aal_zlib_list_contains_exact(string list_text, string needle, string glue)",
+      "category": "Query",
+      "side_effects": "PURE",
+      "purpose": "Perform exact case-insensitive membership check over a delimited list."
+    },
+    {
+      "source": "40",
+      "project": "zlib.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/scripts/zlib.ash#L4",
+      "name": "aal_zlib_clamp",
+      "signature": "float aal_zlib_clamp(float value, float low, float high)",
+      "category": "Math",
+      "side_effects": "PURE",
+      "purpose": "Clamp value with normalized lower/upper bounds."
+    },
+    {
+      "source": "40",
+      "project": "zlib.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/scripts/zlib.ash#L4",
+      "name": "aal_zlib_setting_diff",
+      "signature": "string aal_zlib_setting_diff(string name, string old_value, string new_value)",
+      "category": "Diff / Change Detection",
+      "side_effects": "PURE",
+      "purpose": "Serialize one settings change instead of directly persisting it."
+    },
+    {
+      "source": "40",
+      "project": "zlib.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/scripts/zlib.ash#L4",
+      "name": "aal_zlib_type_validate",
+      "signature": "agent_check aal_zlib_type_validate(string value, string type_name)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Validate a subset of common ZLib setting types with current KoLmafia coercions."
+    },
+    {
+      "source": "40",
+      "project": "zlib.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/scripts/zlib.ash#L4",
+      "name": "aal_zlib_setting_schema_line",
+      "signature": "string aal_zlib_setting_schema_line(string name, string type_name, string default_value, string documentation)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Serialize a typed setting schema row for modern agent/UI consumption."
+    },
+    {
+      "source": "40",
+      "project": "zlib.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/scripts/zlib.ash#L4",
+      "name": "aal_zlib_agent_context",
+      "signature": "string aal_zlib_agent_context(string[string] setting_values, int max_entries)",
+      "category": "LLM Context",
+      "side_effects": "PURE",
+      "purpose": "Build bounded deterministic setting context from a ZLib-like settings map."
+    },
+    {
+      "source": "41",
+      "project": "relay_zlib_manager.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/relay/relay_zlib_manager.ash",
+      "name": "aal_zman_field_kind",
+      "signature": "string aal_zman_field_kind(string value)",
+      "category": "Relay / UI",
+      "side_effects": "PURE",
+      "purpose": "Infer a simple editor control kind from persisted setting text."
+    },
+    {
+      "source": "41",
+      "project": "relay_zlib_manager.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/relay/relay_zlib_manager.ash",
+      "name": "aal_zman_field_validate",
+      "signature": "agent_check aal_zman_field_validate(string name, string value, string kind)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Validate a setting according to inferred/editor kind."
+    },
+    {
+      "source": "41",
+      "project": "relay_zlib_manager.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/relay/relay_zlib_manager.ash",
+      "name": "aal_zman_filter_match",
+      "signature": "boolean aal_zman_filter_match(string setting_name, string documentation, string query)",
+      "category": "Query",
+      "side_effects": "PURE",
+      "purpose": "Filter settings by name or documentation, not name alone."
+    },
+    {
+      "source": "41",
+      "project": "relay_zlib_manager.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/relay/relay_zlib_manager.ash",
+      "name": "aal_zman_change_preview",
+      "signature": "agent_plan aal_zman_change_preview(string name, string old_value, string new_value, string kind)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Validate and preview one settings edit without writing files/properties."
+    },
+    {
+      "source": "41",
+      "project": "relay_zlib_manager.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/relay/relay_zlib_manager.ash",
+      "name": "aal_zman_delete_preview",
+      "signature": "agent_plan aal_zman_delete_preview(string name, boolean confirmed)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Represent queued variable deletion explicitly before persistence."
+    },
+    {
+      "source": "41",
+      "project": "relay_zlib_manager.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/relay/relay_zlib_manager.ash",
+      "name": "aal_zman_group_settings",
+      "signature": "string aal_zman_group_settings(string[string] scripts_for_setting, string script_filter)",
+      "category": "Query",
+      "side_effects": "PURE",
+      "purpose": "List setting names associated with a script tag."
+    },
+    {
+      "source": "41",
+      "project": "relay_zlib_manager.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/relay/relay_zlib_manager.ash",
+      "name": "aal_zman_schema_tsv",
+      "signature": "string aal_zman_schema_tsv(string[string] values, string[string] types, string[string] docs)",
+      "category": "Serialization",
+      "side_effects": "PURE",
+      "purpose": "Serialize editable settings schema/value/doc rows."
+    },
+    {
+      "source": "41",
+      "project": "relay_zlib_manager.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/relay/relay_zlib_manager.ash",
+      "name": "aal_zman_validation_errors",
+      "signature": "string aal_zman_validation_errors(string[string] values, string[string] types)",
+      "category": "Validation",
+      "side_effects": "PURE",
+      "purpose": "Validate an entire settings map and emit only errors."
+    },
+    {
+      "source": "41",
+      "project": "relay_zlib_manager.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/relay/relay_zlib_manager.ash",
+      "name": "aal_zman_save_plan",
+      "signature": "string aal_zman_save_plan(string[string] old_values, string[string] new_values, string[string] types)",
+      "category": "Planning",
+      "side_effects": "PURE",
+      "purpose": "Generate only changed, valid setting rows for a save operation."
+    },
+    {
+      "source": "41",
+      "project": "relay_zlib_manager.ash (fixed historical commit)",
+      "url": "https://github.com/twistedmage/assorted-kol-scripts/blob/1b7f2f94eaa9e9969be6d26886664e2b9b1ea31a/relay/relay_zlib_manager.ash",
+      "name": "aal_zman_agent_context",
+      "signature": "string aal_zman_agent_context(string[string] values, string[string] docs, string query, int max_entries)",
+      "category": "LLM Context",
+      "side_effects": "PURE",
+      "purpose": "Build bounded searchable setting context for agent-assisted configuration."
+    }
+  ]
+}

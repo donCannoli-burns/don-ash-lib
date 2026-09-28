@@ -1,0 +1,17 @@
+{
+  "source_modules": 41,
+  "all_modules_exactly_ten": true,
+  "functions_total": 410,
+  "functions_unique": 410,
+  "duplicate_function_names": [],
+  "balance_errors": [],
+  "unresolved_internal_aal_calls": [],
+  "mutating_calls_in_generated_modules": [],
+  "top_level_executable_calls": [],
+  "purpose_similarity_ge_0_86": 0,
+  "smoke_source_coverage": 41,
+  "monolithic_function_count": 410,
+  "monolithic_unique_function_count": 410,
+  "monolithic_balance_pass": true,
+  "monolithic_mutating_calls": []
+}
