@@ -1,0 +1,22 @@
+{
+  "name": "kolmafia-ash-html-binding",
+  "version": "0.1.0",
+  "profiles": [
+    "html",
+    "html5"
+  ],
+  "files": [
+    "scripts/html5_bind.ash",
+    "relay/relay_ash_html.ash",
+    "relay/relay_ash_html5.ash",
+    "README.md"
+  ],
+  "operations": [
+    "ping",
+    "state",
+    "get_theme",
+    "set_theme"
+  ],
+  "raw_cli_exposed": false,
+  "arbitrary_ash_eval_exposed": false
+}
