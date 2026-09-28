@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageId>KoLmafia.AshBinding</PackageId>
+    <Version>0.1.0</Version>
+    <Description>Typed C# binding for KoLmafia's ASH runtime via /KoLmafia/jsonApi.</Description>
+  </PropertyGroup>
+</Project>

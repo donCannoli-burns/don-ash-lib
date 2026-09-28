@@ -1,0 +1,7 @@
+# return-type cpp-name BrowserJSONApi-name [arg-type arg-name]...
+string my_name myName
+int64 my_meat myMeat
+int64 my_adventures myAdventures
+int64 available_amount availableAmount enum item
+bool have_skill haveSkill enum skill
+json identity identity enum value

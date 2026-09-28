@@ -1,0 +1,15 @@
+.gradle/
+build/
+out/
+*.iml
+.idea/
+KOLMAFIA_PWD
+.DS_Store
+__pycache__/
+*.pyc
+.build/
+dist/
+target/
+node_modules/
+bin/
+obj/

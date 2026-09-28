@@ -1,0 +1,8 @@
+string my_name( )
+int my_meat( )
+int available_amount( item )
+boolean have_skill( skill )
+float numeric_modifier( string )
+item to_item( string )
+int buy( int, item, int )
+int buy( int, item )
