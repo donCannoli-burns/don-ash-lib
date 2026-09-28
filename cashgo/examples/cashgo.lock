@@ -1,0 +1,4 @@
+# CashGo lockfile v1
+# exact manifest dependency specs; source revisions are managed by KoLmafia git
+package	example-ash-project	0.1.0
+dep	vprops	Veracity0/vprops	main	false

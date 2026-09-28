@@ -1,0 +1,16 @@
+# CashGo manifest v1
+
+[package]
+name = "example-ash-project"
+version = "0.1.0"
+entry = "example-main.ash"
+
+[dependencies]
+# GitHub shorthand. Branch/ref is optional.
+vprops = "github:Veracity0/vprops@main"
+
+# Optional dependencies are recorded but not installed by `fetch`.
+# extra = "optional:github:owner/repo@release"
+
+# Full HTTPS Git URL works too:
+# helper = "git:https://github.com/owner/repo.git@main"

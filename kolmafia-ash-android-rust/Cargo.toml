@@ -1,0 +1,24 @@
+[package]
+name = "kolmafia-ash-android"
+version = "0.1.0"
+edition = "2021"
+description = "Android/JNI Rust binding for KoLmafia's ASH runtime JSON API"
+license = "MIT OR Apache-2.0"
+
+[lib]
+name = "kolmafia_ash_android"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+jni = "0.22.4"
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = "s"
+panic = "abort"
+strip = true
