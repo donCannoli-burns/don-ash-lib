@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>KoLmafia ASH WebAssembly example</title></head>
+<body>
+<pre id="out">Loading…</pre>
+<script type="module">
+import { AshClient, Item } from "../js/kolmafia-ash.js";
+
+// Inject/provide the current KoLmafia pwd at runtime. Do not hard-code it in the .wasm.
+const pwd = window.KOLMAFIA_PWD ?? "";
+const out = document.querySelector("#out");
+
+try {
+  const mafia = await AshClient.create({
+    // Empty baseUrl means same-origin, which is ideal when served by KoLmafia's relay browser.
+    baseUrl: "",
+    pwdProvider: async () => pwd,
+  });
+  mafia.setAllowList(["myName", "myMeat", "availableAmount"]);
+  const [name, meat, amount] = await Promise.all([
+    mafia.myName(),
+    mafia.myMeat(),
+    mafia.availableAmount(Item("filthy lucre")),
+  ]);
+  out.textContent = JSON.stringify({ name, meat, amount }, null, 2);
+} catch (error) {
+  out.textContent = String(error?.stack ?? error);
+}
+</script>
+</body>
+</html>

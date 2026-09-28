@@ -1,0 +1,13 @@
+.build/
+.swiftpm/
+.DS_Store
+*.xcodeproj
+__pycache__/
+*.pyc
+build/
+dist/
+target/
+node_modules/
+.gradle/
+bin/
+obj/

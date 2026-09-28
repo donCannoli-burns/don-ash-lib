@@ -1,0 +1,9 @@
+{
+  "name": "kolmafia-ash-wasm",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node tests/wasm-core.mjs && node tests/client.mjs && node tools/ashrefgen.mjs fixtures/ashref.sample.txt dist/generated-ash.js && node --check dist/generated-ash.js"
+  }
+}

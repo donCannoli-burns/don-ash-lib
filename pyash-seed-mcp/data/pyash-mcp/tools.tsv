@@ -1,0 +1,5 @@
+# name	title	description	script	args
+echo	PyASH Echo	Echo one string through the PyASH interpreter.	pyash-mcp/tools/echo.py	message:string:required
+add	PyASH Add	Add two numbers inside PyASH.	pyash-mcp/tools/add.py	a:number:required,b:number:required
+logic	PyASH Logic	Return enabled or disabled using PyASH control flow.	pyash-mcp/tools/logic.py	enabled:boolean:required
+health	PyASH Health	Run a zero-argument PyASH seed-tool health check.	pyash-mcp/tools/health.py	-

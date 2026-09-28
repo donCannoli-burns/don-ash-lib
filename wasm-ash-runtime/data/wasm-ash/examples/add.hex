@@ -1,0 +1,20 @@
+# wasm-ash example: actual WebAssembly binary represented as hexadecimal text.
+#
+# WAT equivalent:
+# (module
+#   (func (export "add") (param i32 i32) (result i32)
+#     local.get 0
+#     local.get 1
+#     i32.add)
+#   (func (export "double") (param i32) (result i32)
+#     local.get 0
+#     local.get 0
+#     call 0))
+
+00 61 73 6d 01 00 00 00
+01 0c 02 60 02 7f 7f 01 7f 60 01 7f 01 7f
+03 03 02 00 01
+07 10 02 03 61 64 64 00 00 06 64 6f 75 62 6c 65 00 01
+0a 12 02
+  07 00 20 00 20 01 6a 0b
+  08 00 20 00 20 00 10 00 0b

@@ -1,0 +1,143 @@
+import Foundation
+
+struct Signature: Hashable {
+    let returnType: String
+    let ashName: String
+    let parameters: [String]
+}
+
+struct TypeMap {
+    let swiftType: String
+    let extractor: String?
+}
+
+let simpleTypes: [String: TypeMap] = [
+    "void": .init(swiftType: "Void", extractor: nil),
+    "boolean": .init(swiftType: "Bool", extractor: "requireBool"),
+    "int": .init(swiftType: "Int", extractor: "requireInt"),
+    "float": .init(swiftType: "Double", extractor: "requireDouble"),
+    "string": .init(swiftType: "String", extractor: "requireString"),
+    "item": .init(swiftType: "Item", extractor: nil),
+    "familiar": .init(swiftType: "Familiar", extractor: nil),
+    "skill": .init(swiftType: "Skill", extractor: nil),
+    "effect": .init(swiftType: "Effect", extractor: nil),
+    "monster": .init(swiftType: "Monster", extractor: nil),
+    "location": .init(swiftType: "Location", extractor: nil),
+    "slot": .init(swiftType: "Slot", extractor: nil),
+    "stat": .init(swiftType: "Stat", extractor: nil),
+    "path": .init(swiftType: "Path", extractor: nil),
+    "class": .init(swiftType: "AscensionClass", extractor: nil),
+    "element": .init(swiftType: "Element", extractor: nil),
+    "phylum": .init(swiftType: "Phylum", extractor: nil),
+    "thrall": .init(swiftType: "Thrall", extractor: nil),
+    "servant": .init(swiftType: "Servant", extractor: nil),
+    "coinmaster": .init(swiftType: "Coinmaster", extractor: nil),
+]
+
+func camelCase(_ ash: String) -> String {
+    let parts = ash.split(separator: "_")
+    guard let first = parts.first else { return ash }
+    return String(first) + parts.dropFirst().map { part in
+        part.prefix(1).uppercased() + part.dropFirst()
+    }.joined()
+}
+
+func stripHTML(_ input: String) -> String {
+    var text = input
+        .replacingOccurrences(of: "<br>", with: "\n", options: .caseInsensitive)
+        .replacingOccurrences(of: "<br/>", with: "\n", options: .caseInsensitive)
+        .replacingOccurrences(of: "<br />", with: "\n", options: .caseInsensitive)
+    text = text.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression)
+    text = text.replacingOccurrences(of: "&nbsp;", with: " ")
+    text = text.replacingOccurrences(of: "&lt;", with: "<")
+    text = text.replacingOccurrences(of: "&gt;", with: ">")
+    text = text.replacingOccurrences(of: "&amp;", with: "&")
+    return text
+}
+
+func parse(_ line: String) -> Signature? {
+    let clean = line.trimmingCharacters(in: .whitespacesAndNewlines)
+    guard !clean.isEmpty else { return nil }
+    guard let open = clean.firstIndex(of: "("), let close = clean.lastIndex(of: ")"), close > open else { return nil }
+    let head = clean[..<open].trimmingCharacters(in: .whitespaces)
+    let headParts = head.split(whereSeparator: { $0.isWhitespace })
+    guard headParts.count >= 2 else { return nil }
+    let returnType = headParts.dropLast().joined(separator: " ").lowercased()
+    let name = String(headParts.last!)
+    let rawParams = clean[clean.index(after: open)..<close].trimmingCharacters(in: .whitespaces)
+    let params = rawParams.isEmpty ? [] : rawParams.split(separator: ",").map { $0.trimmingCharacters(in: .whitespaces).lowercased() }
+    return Signature(returnType: returnType, ashName: name, parameters: params)
+}
+
+func usage() -> Never {
+    let message = "usage: ashrefgen <ashref.txt> <GeneratedASH.swift> [ModuleName]\n"
+    FileHandle.standardError.write(Data(message.utf8))
+    exit(2)
+}
+
+let args = CommandLine.arguments
+if args.count < 3 { usage() }
+let inputURL = URL(fileURLWithPath: args[1])
+let outputURL = URL(fileURLWithPath: args[2])
+let moduleName = args.count >= 4 ? args[3] : "KoLmafiaASH"
+
+let raw = try String(contentsOf: inputURL, encoding: .utf8)
+let lines = stripHTML(raw).split(separator: "\n", omittingEmptySubsequences: false).map(String.init)
+let parsed = lines.compactMap(parse)
+var generated: [Signature] = []
+var skipped: [(String, String)] = []
+
+for sig in parsed {
+    if sig.returnType.contains("[") || sig.returnType.contains("]") || sig.returnType.contains("?") {
+        skipped.append(("\(sig.returnType) \(sig.ashName)", "aggregate/optional return type")); continue
+    }
+    guard let returnInfo = simpleTypes[sig.returnType] else {
+        skipped.append(("\(sig.returnType) \(sig.ashName)", "unsupported return type")); continue
+    }
+    if returnInfo.swiftType != "Void" && returnInfo.extractor == nil {
+        skipped.append(("\(sig.returnType) \(sig.ashName)", "enumerated return decoding intentionally not generated")); continue
+    }
+    var ok = true
+    for p in sig.parameters {
+        if p.contains("[") || p.contains("]") || p.contains("?") || simpleTypes[p] == nil || p == "void" {
+            ok = false; break
+        }
+    }
+    if !ok {
+        skipped.append(("\(sig.returnType) \(sig.ashName)", "unsupported/optional parameter type")); continue
+    }
+    generated.append(sig)
+}
+
+var out = "// Generated by ashrefgen. DO NOT EDIT.\nimport \(moduleName)\n\npublic extension AshClient {\n"
+for sig in generated {
+    let swiftName = camelCase(sig.ashName)
+    let runtimeName = camelCase(sig.ashName)
+    let params = sig.parameters.enumerated().map { index, type in
+        "_ arg\(index): \(simpleTypes[type]!.swiftType)"
+    }.joined(separator: ", ")
+    let callArgs = sig.parameters.indices.map { "arg\($0)" }.joined(separator: ", ")
+    let mapped = simpleTypes[sig.returnType]!
+    out += "    func \(swiftName)(\(params)) async throws -> \(mapped.swiftType) {\n"
+    if mapped.swiftType == "Void" {
+        if callArgs.isEmpty {
+            out += "        _ = try await call(\"\(runtimeName)\")\n"
+        } else {
+            out += "        _ = try await call(\"\(runtimeName)\", \(callArgs))\n"
+        }
+    } else if let extractor = mapped.extractor {
+        if callArgs.isEmpty {
+            out += "        return try (await call(\"\(runtimeName)\")).\(extractor)(\"\(runtimeName)\")\n"
+        } else {
+            out += "        return try (await call(\"\(runtimeName)\", \(callArgs))).\(extractor)(\"\(runtimeName)\")\n"
+        }
+    }
+    out += "    }\n\n"
+}
+out += "}\n"
+if !skipped.isEmpty {
+    out += "\n// Skipped signatures:\n"
+    for (sig, reason) in skipped { out += "// - \(sig): \(reason)\n" }
+}
+try out.write(to: outputURL, atomically: true, encoding: .utf8)
+print("generated=\(generated.count) skipped=\(skipped.count) output=\(outputURL.path)")
