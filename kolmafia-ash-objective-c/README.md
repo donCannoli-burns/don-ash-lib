@@ -7,7 +7,7 @@ It is intentionally not an embedded ASH interpreter. It lets Objective-C program
 ## Requirements
 
 - macOS with the Foundation framework
-- Clang / Xcode Command Line Tols
+- Clang / Xcode Command Line Tools
 - ARC (the Makefile enables `-fobjc-arc`)
 - a running KoLmafia relay server (default `http://127.0.0.1:60080`)
 - the current KoLmafia `pwd` hash
@@ -40,7 +40,7 @@ make source-check
 
 NSError *error = nil;
 KMAshClient *mafia = [[KMAshClient alloc]
-    initWithPasswordHash:NSProcessInfo.processInfo.environment[@!"KOLMAFIA_PWD"]];
+    initWithPasswordHash:NSProcessInfo.processInfo.environment[@"KOLMAFIA_PWD"]];
 
 NSString *name = [mafia myName:&error];
 NSNumber *level = [mafia myLevel:&error];
