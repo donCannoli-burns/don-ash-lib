@@ -2,19 +2,26 @@
 
 `don_master_lib.ash` is a standalone, import-safe KoLmafia ASH utility layer built to replace the common pattern of importing several overlapping legacy helper libraries into every personal script.
 
-## Install
+## Install with KoLmafia Git (recommended)
 
-Copy `don_master_lib.ash` into KoLmafia's `scripts/` directory, then import it from another ASH script:
+Paste this into KoLmafia's graphical CLI:
+
+```text
+git checkout https://github.com/donCannoli-burns/don-ash-lib.git main
+verify don_master_lib.ash
+call don_master_smoke.ash
+```
+
+The repository-root `manifest.json` selects `don-master-ash-lib/`. KoLmafia installs the files under `don-master-ash-lib/scripts/` into its local `scripts/` directory; unrelated source-shelf projects are not installed.
+
+**Do not use** the GitHub browser URL `.../tree/main/don-master-ash-lib` with `git checkout`: KoLmafia Git requires the repository URL and optional branch. For updates use `git update`.
+
+Manual install remains possible: copy `don_master_lib.ash` into KoLmafia's `scripts/` directory (and `don_master_smoke.ash` if you want the smoke test).
+
+Import the library from any ASH script:
 
 ```ash
 import <don_master_lib.ash>;
-```
-
-Recommended local checks:
-
-```text
-verify don_master_lib.ash
-call don_master_smoke.ash
 ```
 
 ## Design rules

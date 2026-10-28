@@ -4,6 +4,22 @@ A small-project source shelf for KoLmafia ASH libraries, runtime experiments, la
 
 Each project keeps its own source, README, provenance, and license inside a named directory. This repository is intentionally a collection of small projects rather than one unified framework.
 
+## KoLmafia Git installation: DON Master ASH Lib
+
+This repository is a multi-project source shelf. **KoLmafia's `git checkout` installs only DON Master ASH Lib**, using the repository-root `manifest.json` pointing at `don-master-ash-lib/`. Other shelf projects are not synced.
+
+In KoLmafia's graphical CLI:
+
+```text
+git checkout https://github.com/donCannoli-burns/don-ash-lib.git main
+verify don_master_lib.ash
+call don_master_smoke.ash
+```
+
+The checked-in installable files live under `don-master-ash-lib/scripts/`; KoLmafia syncs them to its `scripts/` directory. The GitHub browser URL ending in `/tree/main/don-master-ash-lib` is not itself a valid KoLmafia Git checkout URL.
+
+Use `git list` to inspect installed repositories and `git update` to update them. If you already copied `don_master_lib.ash` manually, inspect that copy before installing to avoid overwriting local edits.
+
 ## Project shelf
 
 | Project | Purpose | Packaging verification |
