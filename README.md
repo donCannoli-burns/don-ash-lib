@@ -104,3 +104,9 @@ The five projects whose licensing was explicitly cleared during the 2026-09-28 p
 Other projects retain their source-supplied licensing, including any dual-license terms. Existing third-party notices, source-pattern credits, copyrights, and upstream license terms remain in force for material they cover.
 
 Software is provided without warranty; use it at your own risk.
+
+## pTrack legacy accounting compatibility
+
+The KoLmafia-installable `don-master-ash-lib/scripts/don_track_compat.ash` is a trimmed compatibility extraction from The Dictator's DicsLibrary (via Prusias-kol/pTrack / [dTrack](https://github.com/donCannoli-burns/dTrack)). It exports the legacy functions needed by `ProfitTracking.ash`: `get_property_int`, `get_property_bool`, `total_amount`, `itemValue`, and their valuation helpers. The legacy pricing rules were preserved rather than silently substituting the more general `don_item_value` model. The large action-oriented remainder of DicsLibrary is deliberately excluded.
+
+This module imports `don_master_lib.ash` and is intended for pTrack accounting compatibility, not a replacement for every function in the full historical DicsLibrary. **Experimental — use at your own risk.** Run `verify ptrack.ash` or `verify ptrack` after updating both repositories. No live KoLmafia compile or accounting comparison has yet been executed by this change.
