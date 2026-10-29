@@ -118,3 +118,6 @@ The installable `don-master-ash-lib/scripts/don_updates_lib.ash` is the hardened
 
 The independently staged `dtrack-suite/` source tree is **GPL-3.0**, not MIT. The original GPL notice is retained under that project as `LICENSE`, and a copy is installed beside the separate `don_track_compat.ash` under `don-master-ash-lib/third_party/dTrack-GPL-3.0.txt`. The root `manifest.json` still installs only `don-master-ash-lib/`, and does not install the staged dTrack suite. This isolation avoids accidental activation of untested tracking scripts or implying that their GPL-3.0 contents have been relicensed. Review licensing compatibility before distributing a combined runtime work.
 
+## BoneFarm / BoneTrack shared helpers
+
+The installable `don-master-ash-lib/scripts/don_bone_lib.ash` and read-only `don_bone_smoke.ash` support the absorbed [BoneFarm and BoneTrack commands](https://github.com/donCannoli-burns/don_custom_functions). This is a small shared helper, **not** a second installation of `boneFarm.ash`, `boneTrack.ash`, or the relay dashboard. See [the module's usage and provenance](don-master-ash-lib/README.md#absorbed-skeleton-of-crimbo-past-bone-helpers-2026-10-29). The root manifest still installs only `don-master-ash-lib/`.

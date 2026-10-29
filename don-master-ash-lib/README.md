@@ -162,3 +162,15 @@ MIT License. See `LICENSE`. Preserved source-pattern credits remain attribution,
 - selected source hash match
 
 Installed KoLmafia verify/smoke has not been run; runtime verification remains separate from publication readiness.
+
+## Absorbed Skeleton of Crimbo Past bone helpers (2026-10-29)
+
+`don-master-ash-lib/scripts/don_bone_lib.ash` is an **import-safe, read-only** helper used by the installable `boneFarm.ash` and `boneTrack.ash` commands in [don_custom_functions](https://github.com/donCannoli-burns/don_custom_functions). The standalone `don_bone_smoke.ash` checks counters and ownership without spending adventures.
+
+Its APIs are `don_bone_daily_drops()`, `don_bone_rest_drops()`, `don_bone_adventure_drops()`, `don_bone_remaining(int)`, and `don_bone_owned_amount(item)`. The authoritative daily count `_knuckleboneDrops` **already includes** `_knuckleboneRests`; never sum those two counts. Both counters are read live, never cached on import.
+
+The gameplay and relay entrypoints remain in `don_custom_functions`, not this source shelf: importing this library must never start farming, set a preference, retrieve inventory, open a wiki, or write tracking files. The historical BoneTrack `data/boneTrack/<player>/` tree stays in the calling scripts and is not managed by this library.
+
+Sources and provenance: [boneFarm](https://github.com/donCannoli-burns/boneFarm) (main `fe0c953243b9637f564295e2ce3b18c3c03a9190`) and [boneTrack.ash](https://github.com/donCannoli-burns/boneTrack.ash) (main `4cd400c7d5fc94579124943236a512b86589e938`). The source repositories remain intact. This is an extract of small shared accounting primitives, not a vendored second copy of the runnable scripts.
+
+In KoLmafia, `verify don_bone_lib.ash`, `verify don_bone_smoke.ash`, then `call don_bone_smoke.ash`. Actual KoLmafia runtime verification is separate from these GitHub edits.
