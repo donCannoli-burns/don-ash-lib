@@ -121,3 +121,7 @@ The independently staged `dtrack-suite/` source tree is **GPL-3.0**, not MIT. Th
 ## BoneFarm / BoneTrack shared helpers
 
 The installable `don-master-ash-lib/scripts/don_bone_lib.ash` and read-only `don_bone_smoke.ash` support the absorbed [BoneFarm and BoneTrack commands](https://github.com/donCannoli-burns/don_custom_functions). This is a small shared helper, **not** a second installation of `boneFarm.ash`, `boneTrack.ash`, or the relay dashboard. See [the module's usage and provenance](don-master-ash-lib/README.md#absorbed-skeleton-of-crimbo-past-bone-helpers-2026-10-29). The root manifest still installs only `don-master-ash-lib/`.
+
+## Absorbed CodMaster primitives
+
+`don-master-ash-lib/scripts/don_codmaster_lib.ash` adds import-safe Codpiece gem configuration read/write, current gem capture, preset equip and historical save compatibility. The runnable `codMaster.ash` lives in `don_custom_functions`, and `UnderTheSea` consumes its shared APIs. Saved presets remain under `data/cod_master/saves/*.txt`; `spell.txt` is not copied to GitHub. See [the library usage guide](don-master-ash-lib/README.md#codmaster-absorbed-library-2026-10-29).
