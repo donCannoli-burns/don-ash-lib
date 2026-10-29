@@ -174,3 +174,25 @@ The gameplay and relay entrypoints remain in `don_custom_functions`, not this so
 Sources and provenance: [boneFarm](https://github.com/donCannoli-burns/boneFarm) (main `fe0c953243b9637f564295e2ce3b18c3c03a9190`) and [boneTrack.ash](https://github.com/donCannoli-burns/boneTrack.ash) (main `4cd400c7d5fc94579124943236a512b86589e938`). The source repositories remain intact. This is an extract of small shared accounting primitives, not a vendored second copy of the runnable scripts.
 
 In KoLmafia, `verify don_bone_lib.ash`, `verify don_bone_smoke.ash`, then `call don_bone_smoke.ash`. Actual KoLmafia runtime verification is separate from these GitHub edits.
+
+## CodMaster absorbed library (2026-10-29)
+
+The installable \`don-master-ash-lib/scripts/don_codmaster_lib.ash\` owns the shared, import-safe Codpiece configuration API; \`codMaster.ash\` remains a standalone command in [don_custom_functions](https://github.com/donCannoli-burns/don_custom_functions). Import does not change KoL state. All mutating functions require an explicit call.
+
+Existing saves are **not migrated, renamed, or removed**. The original KoLmafia map format and relative path \`data/cod_master/saves/<name>.txt\` are retained exactly, including \`spell.txt\` and keys \`cod_master_Slot_1\` through \`cod_master_Slot_5\`. On the user's profile this is \`~/.kolmafia/data/cod_master/saves/spell.txt\`. The historic \`cod_master_validSaves\` comma-separated preference registry stays intact; files can still be read even if absent from that registry.
+
+- \`don_cod_read(name, map)\` read-only and validates the five legacy keys; \`don_cod_print_saved(name)\` prints the preset.
+- \`don_cod_write(name, map, overwrite)\` writes and reads back a verified save, refusing existing files when overwrite is false.
+- \`don_cod_save_preferences(name, overwrite)\` and \`don_cod_load_preferences(name)\` preserve original slot preferences.
+- \`don_cod_capture(map)\` reads mounted gems; \`don_cod_save_equipped(name, overwrite)\` stores them.
+- \`don_cod_equip_saved(name)\` equips verified stored gems with inventory preflight and per-slot post-check; it may partially change equipment if a later slot fails.
+- \`don_cod_valid_name(name)\` allows only ASCII letters, digits, dash and underscore, 1–64 characters; prevents directory traversal.
+
+\`don_codmaster_smoke.ash\` performs read-only format tests. \`don_codmaster_ci_roundtrip.ash\` tests a real write/read cycle only in a disposable CI KoLmafia profile. Do not invoke the latter against a personal profile. No live Codpiece equip action is included in CI.
+
+Provenance: [donCannoli-burns/codMaster](https://github.com/donCannoli-burns/codMaster), original \`scripts/codMaster.ash\` Git blob \`e0da5ef64ef203532dde37c53e3c7ca5f0b2573f\` at \`main\` \`7fb608b023a36fdd8a497c854253521aed2757d4\`. The original repository and private profile saves are untouched. The replacement fixes the original overwrite-before-confirmation ordering and slot-capture bug; its source need not remain separately checked out after the new version is verified.
+
+
+### Canonical physical save path
+
+KoLmafia resolves `map_to_file` paths within `~/.kolmafia/data/`. Thus the canonical *API* path `cod_master/saves/spell.txt` resolves to `~/.kolmafia/data/cod_master/saves/spell.txt`. The older redundant `data/cod_master/saves/spell.txt` *API* prefix is supported as a read-only fallback for legacy nested saves; it is never automatically removed. Missing files return empty maps despite a true `file_to_map` result, so the library validates nonempty keys.
