@@ -29,6 +29,7 @@ Use `git list` to inspect installed repositories and `git update` to update them
 | [ash-pyash-webscraper](ash-pyash-webscraper/) | Bounded GET-only ASH/PyASH web scraper with HTML/Markdown/PDF output. | PASS |
 | [cashgo](cashgo/) | Cargo-inspired ASH project/dependency manifest and lock experiment. | PASS |
 | [don-master-ash-lib](don-master-ash-lib/) | Namespaced general-purpose KoLmafia ASH utility library. | PASS |
+| [dtrack-suite](dtrack-suite/) | GPL-3.0-preserving source-only staging of hardened pTrack suite. **Not installed by the root manifest.** | STAGED — RUNTIME UNVERIFIED |
 | [kingdomsitter](kingdomsitter/) | Go-first ASH parser/IR/analysis and TypeScript sidecar. | PARTIAL |
 | [kolmafia-ash-android-rust](kolmafia-ash-android-rust/) | Android Kotlin/Java → Rust JNI → KoLmafia JSON API binding. | UNVERIFIED |
 | [kolmafia-ash-c](kolmafia-ash-c/) | C11 binding for KoLmafia ASH/runtime access. | PARTIAL |
@@ -110,3 +111,10 @@ Software is provided without warranty; use it at your own risk.
 The KoLmafia-installable `don-master-ash-lib/scripts/don_track_compat.ash` is a trimmed compatibility extraction from The Dictator's DicsLibrary (via Prusias-kol/pTrack / [dTrack](https://github.com/donCannoli-burns/dTrack)). It exports the legacy functions needed by `ProfitTracking.ash`: `get_property_int`, `get_property_bool`, `total_amount`, `itemValue`, and their valuation helpers. The legacy pricing rules were preserved rather than silently substituting the more general `don_item_value` model. The large action-oriented remainder of DicsLibrary is deliberately excluded.
 
 This module imports `don_master_lib.ash` and is intended for pTrack accounting compatibility, not a replacement for every function in the full historical DicsLibrary. **Experimental — use at your own risk.** Run `verify ptrack.ash` or `verify ptrack` after updating both repositories. No live KoLmafia compile or accounting comparison has yet been executed by this change.
+
+## Absorbed update-library module and GPL separation
+
+The installable `don-master-ash-lib/scripts/don_updates_lib.ash` is the hardened, namespaced implementation of Prusias-kol's MIT-licensed pUpdates, with stable `data/dUpdates/` files, old `data/pUpdates/` read fallback, and `prusias_pUpdates_` preference keys. The `pUpdates` command entrypoint itself lives in [don_custom_functions](https://github.com/donCannoli-burns/don_custom_functions), which already declares don-ash-lib as a dependency. The upstream MIT notice ships at `don-master-ash-lib/third_party/pUpdates-MIT.txt`.
+
+The independently staged `dtrack-suite/` source tree is **GPL-3.0**, not MIT. The original GPL notice is retained under that project as `LICENSE`, and a copy is installed beside the separate `don_track_compat.ash` under `don-master-ash-lib/third_party/dTrack-GPL-3.0.txt`. The root `manifest.json` still installs only `don-master-ash-lib/`, and does not install the staged dTrack suite. This isolation avoids accidental activation of untested tracking scripts or implying that their GPL-3.0 contents have been relicensed. Review licensing compatibility before distributing a combined runtime work.
+
