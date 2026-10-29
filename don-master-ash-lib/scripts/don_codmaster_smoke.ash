@@ -4,7 +4,7 @@ import <don_codmaster_lib.ash>;
 // Read-only structural tests; no save writes or equipment changes.
 void main() {
     if (!don_cod_valid_name("spell")) abort("spell preset rejected");
-    if (don_cod_save_path("spell") != "data/cod_master/saves/spell.txt")
+    if (don_cod_save_path("spell") != "cod_master/saves/spell.txt")
         abort("legacy spell.txt path changed");
     if (don_cod_valid_name("../spell") || don_cod_valid_name("a/b") ||
         don_cod_valid_name("a.b") || don_cod_valid_name(""))

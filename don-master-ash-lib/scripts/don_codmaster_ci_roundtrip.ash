@@ -8,6 +8,7 @@ void main() {
     string [string] config;
     for (int i = 1; i <= 5; i = i + 1)
         config[don_cod_slot_key(i)] = to_string(to_int($item[unblemished pearl]));
+    if (don_cod_exists(name)) abort("CI test save already exists");
     if (!don_cod_write(name, config, false)) abort("roundtrip write failed");
     string [string] result;
     if (!don_cod_read(name, result)) abort("roundtrip read failed");

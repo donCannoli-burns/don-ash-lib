@@ -191,3 +191,8 @@ Existing saves are **not migrated, renamed, or removed**. The original KoLmafia 
 \`don_codmaster_smoke.ash\` performs read-only format tests. \`don_codmaster_ci_roundtrip.ash\` tests a real write/read cycle only in a disposable CI KoLmafia profile. Do not invoke the latter against a personal profile. No live Codpiece equip action is included in CI.
 
 Provenance: [donCannoli-burns/codMaster](https://github.com/donCannoli-burns/codMaster), original \`scripts/codMaster.ash\` Git blob \`e0da5ef64ef203532dde37c53e3c7ca5f0b2573f\` at \`main\` \`7fb608b023a36fdd8a497c854253521aed2757d4\`. The original repository and private profile saves are untouched. The replacement fixes the original overwrite-before-confirmation ordering and slot-capture bug; its source need not remain separately checked out after the new version is verified.
+
+
+### Canonical physical save path
+
+KoLmafia resolves `map_to_file` paths within `~/.kolmafia/data/`. Thus the canonical *API* path `cod_master/saves/spell.txt` resolves to `~/.kolmafia/data/cod_master/saves/spell.txt`. The older redundant `data/cod_master/saves/spell.txt` *API* prefix is supported as a read-only fallback for legacy nested saves; it is never automatically removed. Missing files return empty maps despite a true `file_to_map` result, so the library validates nonempty keys.

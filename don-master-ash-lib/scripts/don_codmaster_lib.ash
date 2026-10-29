@@ -2,7 +2,8 @@ script "don_codmaster_lib.ash";
 
 // Absorbed codMaster shared helpers. Importing this file changes NO state.
 // Existing KoLmafia map_to_file format, savefile and preferences are preserved.
-string DON_COD_SAVE_DIR = "data/cod_master/saves/";
+string DON_COD_SAVE_DIR = "cod_master/saves/";
+string DON_COD_LEGACY_SAVE_DIR = "data/cod_master/saves/";
 
 boolean don_cod_valid_name(string name) {
     if (length(name) < 1 || length(name) > 64) return false;
@@ -48,8 +49,21 @@ boolean don_cod_valid_config(string [string] config) {
 boolean don_cod_read(string name, string [string] config) {
     string savefile = don_cod_save_path(name);
     if (savefile == "") return false;
-    if (!file_to_map(savefile, config)) return false;
-    return don_cod_valid_config(config);
+    file_to_map(savefile, config);
+    // KoLmafia returns TRUE for missing files; inspect loaded keys.
+    if (count(config) > 0) return don_cod_valid_config(config);
+    file_to_map(DON_COD_LEGACY_SAVE_DIR + name + ".txt", config);
+    return count(config) > 0 && don_cod_valid_config(config);
+}
+
+// Protect saves in both the canonical path and the older doubled-data path.
+boolean don_cod_exists(string name) {
+    if (!don_cod_valid_name(name)) return false;
+    string [string] saved;
+    file_to_map(don_cod_save_path(name), saved);
+    if (count(saved) > 0) return true;
+    file_to_map(DON_COD_LEGACY_SAVE_DIR + name + ".txt", saved);
+    return count(saved) > 0;
 }
 
 // Save exactly five keys and verify persisted bytes through file_to_map.
@@ -57,11 +71,11 @@ boolean don_cod_read(string name, string [string] config) {
 boolean don_cod_write(string name, string [string] config, boolean overwrite) {
     string savefile = don_cod_save_path(name);
     if (savefile == "" || !don_cod_valid_config(config)) return false;
-    string [string] old;
-    if (!overwrite && file_to_map(savefile, old)) return false;
+    if (!overwrite && don_cod_exists(name)) return false;
     if (!map_to_file(config, savefile)) return false;
     string [string] persisted;
-    if (!file_to_map(savefile, persisted) || !don_cod_valid_config(persisted)) return false;
+    file_to_map(savefile, persisted);
+    if (count(persisted) != 5 || !don_cod_valid_config(persisted)) return false;
     for (int i = 1; i <= 5; i = i + 1)
         if (persisted[don_cod_slot_key(i)] != config[don_cod_slot_key(i)]) return false;
     string registry = get_property("cod_master_validSaves");
