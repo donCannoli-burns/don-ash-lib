@@ -1,7 +1,7 @@
 script "don_codmaster_lib.ash";
 
 // Absorbed codMaster shared helpers. Importing this file changes NO state.
-// Existing KoLmafia map_to_file format, path and preferences are preserved.
+// Existing KoLmafia map_to_file format, savefile and preferences are preserved.
 string DON_COD_SAVE_DIR = "data/cod_master/saves/";
 
 boolean don_cod_valid_name(string name) {
@@ -46,22 +46,22 @@ boolean don_cod_valid_config(string [string] config) {
 }
 
 boolean don_cod_read(string name, string [string] config) {
-    string path = don_cod_save_path(name);
-    if (path == "") return false;
-    if (!file_to_map(path, config)) return false;
+    string savefile = don_cod_save_path(name);
+    if (savefile == "") return false;
+    if (!file_to_map(savefile, config)) return false;
     return don_cod_valid_config(config);
 }
 
 // Save exactly five keys and verify persisted bytes through file_to_map.
 // Existing saves are never overwritten unless overwrite is explicitly true.
 boolean don_cod_write(string name, string [string] config, boolean overwrite) {
-    string path = don_cod_save_path(name);
-    if (path == "" || !don_cod_valid_config(config)) return false;
+    string savefile = don_cod_save_path(name);
+    if (savefile == "" || !don_cod_valid_config(config)) return false;
     string [string] old;
-    if (!overwrite && file_to_map(path, old)) return false;
-    if (!map_to_file(config, path)) return false;
+    if (!overwrite && file_to_map(savefile, old)) return false;
+    if (!map_to_file(config, savefile)) return false;
     string [string] persisted;
-    if (!file_to_map(path, persisted) || !don_cod_valid_config(persisted)) return false;
+    if (!file_to_map(savefile, persisted) || !don_cod_valid_config(persisted)) return false;
     for (int i = 1; i <= 5; i = i + 1)
         if (persisted[don_cod_slot_key(i)] != config[don_cod_slot_key(i)]) return false;
     string registry = get_property("cod_master_validSaves");
