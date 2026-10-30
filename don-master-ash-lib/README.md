@@ -24,6 +24,20 @@ Import the library from any ASH script:
 import <don_master_lib.ash>;
 ```
 
+## Optional C2T-inspired, import-safe utility modules
+
+These additional scripts install alongside `don_master_lib.ash` but are **not imported by the core automatically**:
+
+| Module | Public API | Effect |
+| --- | --- | --- |
+| `don_iotm_catalog.ash` | `don_iotm_catalog()`, `don_iotm_find(key)`, `don_iotm_status(key)` | Read-only IotM metadata and state hints, no execution |
+| `don_relay_select2.ash` | `don_relay_tag_searchable_selects(page)` | Pure HTML string transformation; caller supplies optional UI assets |
+| `don_train_plan.ash` | `don_train_layout_valid(config)`, `don_train_layout_error(config)` | Validate eight train stations, no workshed mutation |
+
+The APIs use `don_` names and default to **no** network, choices, CLI commands, purchases, equipment changes or preferences writes. This is capability discovery and validation, not a generic dynamic executor.
+
+The upstream project inspirations include C2Talon/liba, c2t_kol_scripts and insertSelect2. MIT notices for adapted material are in `third_party/C2Talon-MIT.txt` and `third_party/C2Talon-c2t_kol_scripts-MIT.txt`. See the [extraction audit](https://github.com/donCannoli-burns/don_custom_functions/blob/main/C2T_ASH_ADOPTION_AUDIT_2026-10-29.md).
+
 ## Design rules
 
 1. **Importing the library does not intentionally mutate KoL state.** There are no top-level `visit_url`, `buy`, `adventure`, `set_property`, `cli_execute`, stash, or choice actions.
