@@ -19,6 +19,7 @@ if (get_property("prusias_ptrack_priceOverrides") != "") {
 		int overridePrice = split_map[1].to_int();
 		userPriceOverrides[overrideItem] = overridePrice;
 	}
+}
 
 int get_property_int( string property ) {
 	if ( substring(property,0,1) != "_" && !property_exists(property) )
